@@ -1,0 +1,16 @@
+[project]
+name = "sp-tjsp-divadmin"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "lxml>=6.1.1",
+    "notebook>=7.5.7",
+    "open-geodata>=25.9.32",
+    "openpyxl>=3.1.5",
+    "pandas>=3.0.3",
+    "python-dotenv>=1.2.2",
+    "requests-ip-rotator>=1.0.18",
+    "xlrd>=2.0.2",
+]

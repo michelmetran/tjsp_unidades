@@ -1,646 +1,646 @@
-id_municipio,id_municipio_tjsp,municipio_tjsp,municipio_tjsp_corrigido,comarca_sede,id_comarca,id_cj
-3500105,6504,Adamantina,Adamantina,1,3500105,30
-3500204,6505,Adolfo,Adolfo,0,3525706,16
-3500303,6506,Aguaí,Aguaí,1,3500303,50
-3500402,6507,Águas da Prata,Águas da Prata,0,3549102,50
-3500501,6508,Águas de Lindóia,Águas de Lindóia,1,3500501,54
-3500550,6509,Águas de Santa Bárbara,Águas de Santa Bárbara,0,3511409,24
-3500600,6510,Águas de São Pedro,Águas de São Pedro,0,3550407,34
-3500709,6511,Agudos,Agudos,1,3500709,32
-3500758,6512,Alambari,Alambari,0,3522307,22
-3500808,6513,Alfredo Marcondes,Alfredo Marcondes,0,3541406,27
-3500907,6514,Altair,Altair,0,3533908,14
-3501004,6515,Altinópolis,Altinópolis,1,3501004,39
-3501103,6516,Alto Alegre,Alto Alegre,0,3537305,36
-3501152,6517,Alumínio,Alumínio,0,3528403,19
-3501202,6518,Álvares Florence,Álvares Florence,0,3557105,17
-3501301,6519,Álvares Machado,Álvares Machado,0,3541406,27
-3501400,6520,Álvaro de Carvalho,Álvaro de Carvalho,0,3516705,31
-3501509,6521,Alvinlândia,Alvinlândia,0,3516705,31
-3501608,6522,Americana,Americana,1,3501608,53
-3501707,6523,Américo Brasiliense,Américo Brasiliense,1,3501707,13
-3501806,6524,Américo de Campos,Américo de Campos,0,3553401,16
-3501905,6525,Amparo,Amparo,1,3501905,54
-3502002,6526,Analândia,Analândia,0,3523602,9
-3502101,6527,Andradina,Andradina,1,3502101,37
-3502200,6528,Angatuba,Angatuba,1,3502200,22
-3502309,6529,Anhembi,Anhembi,0,3512308,23
-3502408,6530,Anhumas,Anhumas,0,3541406,27
-3502507,6531,Aparecida,Aparecida,1,3502507,48
-3502606,6532,Aparecida d'Oeste,Aparecida d'Oeste,0,3535200,55
-3502705,6533,Apiaí,Apiaí,1,3502705,49
-3502754,6534,Araçariguama,Araçariguama,0,3550605,19
-3502804,6535,Araçatuba,Araçatuba,1,3502804,36
-3502903,6536,Araçoiaba da Serra,Araçoiaba da Serra,0,3552205,19
-3503000,6537,Aramina,Aramina,0,3520103,40
-3503109,6538,Arandu,Arandu,0,3504503,24
-3503158,6539,Arapeí,Arapeí,0,3504909,48
-3503208,6540,Araraquara,Araraquara,1,3503208,13
-3503307,6541,Araras,Araras,1,3503307,10
-3503356,6542,Arco-Íris,Arco-Íris,0,3555000,30
-3503406,6543,Arealva,Arealva,0,3506003,32
-3503505,6544,Areias,Areias,0,3541901,48
-3503604,6545,Areiópolis,Areiópolis,0,3550100,23
-3503703,6546,Ariranha,Ariranha,0,3545605,15
-3503802,6547,Artur Nogueira,Artur Nogueira,1,3503802,7
-3503901,6548,Arujá,Arujá,1,3503901,44
-3503950,6549,Aspásia,Aspásia,0,3555802,55
-3504008,6550,Assis,Assis,1,3504008,26
-3504107,6551,Atibaia,Atibaia,1,3504107,6
-3504206,6552,Auriflama,Auriflama,1,3504206,55
-3504305,6553,Avaí,Avaí,0,3506003,32
-3504404,6554,Avanhandava,Avanhandava,0,3537305,36
-3504503,6555,Avaré,Avaré,1,3504503,24
-3504602,6556,Bady Bassitt,Bady Bassitt,0,3549805,16
-3504701,6557,Balbinos,Balbinos,0,3538907,32
-3504800,6558,Bálsamo,Bálsamo,0,3530300,16
-3504909,6559,Bananal,Bananal,1,3504909,48
-3505005,6560,Barão de Antonina,Barão de Antonina,0,3522802,49
-3505104,6561,Barbosa,Barbosa,0,3537305,36
-3505203,6562,Bariri,Bariri,1,3505203,33
-3505302,6563,Barra Bonita,Barra Bonita,1,3505302,33
-3505351,6564,Barra do Chapéu,Barra do Chapéu,0,3502705,49
-3505401,6565,Barra do Turvo,Barra do Turvo,0,3524600,21
-3505500,6566,Barretos,Barretos,1,3505500,14
-3505609,6567,Barrinha,Barrinha,0,3551702,41
-3505708,6568,Barueri,Barueri,1,3505708,4
-3505807,6569,Bastos,Bastos,1,3505807,30
-3505906,6570,Batatais,Batatais,1,3505906,39
-3506003,6571,Bauru,Bauru,1,3506003,32
-3506102,6572,Bebedouro,Bebedouro,1,3506102,14
-3506201,6573,Bento de Abreu,Bento de Abreu,0,3556305,36
-3506300,6574,Bernardino de Campos,Bernardino de Campos,0,3520905,25
-3506359,6575,Bertioga,Bertioga,1,3506359,1
-3506409,6576,Bilac,Bilac,1,3506409,36
-3506508,6577,Birigui,Birigui,1,3506508,36
-3506607,6578,Biritiba-Mirim,Biritiba-Mirim,0,3530607,45
-3506706,6579,Boa Esperança do Sul,Boa Esperança do Sul,0,3542909,12
-3506805,6580,Bocaina,Bocaina,0,3525300,33
-3506904,6581,Bofete,Bofete,0,3540507,22
-3507001,6582,Boituva,Boituva,1,3507001,20
-3507100,6583,Bom Jesus dos Perdões,Bom Jesus dos Perdões,0,3532405,6
-3507159,6584,Bom Sucesso de Itararé,Bom Sucesso de Itararé,0,3523206,49
-3507209,6585,Borá,Borá,0,3535507,26
-3507308,6586,Boracéia,Boracéia,0,3536703,33
-3507407,6587,Borborema,Borborema,1,3507407,13
-3507456,6588,Borebi,Borebi,0,3526803,32
-3507506,6589,Botucatu,Botucatu,1,3507506,23
-3507605,6590,Bragança Paulista,Bragança Paulista,1,3507605,6
-3507704,6591,Braúna,Braúna,0,3537305,36
-3507753,6592,Brejo Alegre,Brejo Alegre,0,3506508,36
-3507803,6593,Brodowski,Brodowski,1,3507803,39
-3507902,6594,Brotas,Brotas,1,3507902,9
-3508009,6595,Buri,Buri,1,3508009,49
-3508108,6596,Buritama,Buritama,1,3508108,36
-3508207,6597,Buritizal,Buritizal,0,3520103,40
-3508306,6598,Cabrália Paulista,Cabrália Paulista,0,3514502,32
-3508405,6599,Cabreúva,Cabreúva,1,3508405,20
-3508504,6600,Caçapava,Caçapava,1,3508504,47
-3508603,6601,Cachoeira Paulista,Cachoeira Paulista,1,3508603,48
-3508702,6602,Caconde,Caconde,1,3508702,43
-3508801,6603,Cafelândia,Cafelândia,1,3508801,35
-3508900,6604,Caiabu,Caiabu,0,3542404,27
-3509007,6605,Caieiras,Caieiras,1,3509007,5
-3509106,6606,Caiuá,Caiuá,0,3541307,28
-3509205,6607,Cajamar,Cajamar,1,3509205,5
-3509254,6608,Cajati,Cajati,0,3524600,21
-3509304,6609,Cajobi,Cajobi,0,3533908,14
-3509403,6610,Cajuru,Cajuru,1,3509403,41
-3509452,6611,Campina do Monte Alegre,Campina do Monte Alegre,0,3502200,22
-3509502,6612,Campinas,Campinas,1,3509502,8
-3509601,6613,Campo Limpo Paulista,Campo Limpo Paulista,1,3509601,5
-3509700,6614,Campos do Jordão,Campos do Jordão,1,3509700,47
-3509809,6615,Campos Novos Paulista,Campos Novos Paulista,0,3535309,26
-3509908,6616,Cananéia,Cananéia,1,3509908,21
-3509957,6617,Canas,Canas,0,3527207,48
-3510005,6618,Cândido Mota,Cândido Mota,1,3510005,26
-3510104,6619,Cândido Rodrigues,Cândido Rodrigues,0,3553708,42
-3510153,6620,Canitar,Canitar,0,3557204,25
-3510203,6621,Capão Bonito,Capão Bonito,1,3510203,22
-3510302,6622,Capela do Alto,Capela do Alto,0,3554003,22
-3510401,6623,Capivari,Capivari,1,3510401,34
-3510500,6624,Caraguatatuba,Caraguatatuba,1,3510500,51
-3510609,6625,Carapicuíba,Carapicuíba,1,3510609,4
-3510708,6626,Cardoso,Cardoso,1,3510708,17
-3510807,6627,Casa Branca,Casa Branca,1,3510807,43
-3510906,6628,Cássia dos Coqueiros,Cássia dos Coqueiros,0,3509403,41
-3511003,6629,Castilho,Castilho,0,3502101,37
-3511102,6630,Catanduva,Catanduva,1,3511102,15
-3511201,6631,Catiguá,Catiguá,0,3552601,15
-3511300,6632,Cedral,Cedral,0,3549805,16
-3511409,6633,Cerqueira César,Cerqueira César,1,3511409,24
-3511508,6634,Cerquilho,Cerquilho,1,3511508,34
-3511607,6635,Cesário Lange,Cesário Lange,1,3511607,22
-3511706,6636,Charqueada,Charqueada,0,3538709,34
-3557204,7147,Chavantes,Chavantes,1,3557204,25
-3511904,6637,Clementina,Clementina,0,3506508,36
-3512001,6638,Colina,Colina,1,3512001,14
-3512100,6639,Colômbia,Colômbia,0,3505500,14
-3512209,6640,Conchal,Conchal,1,3512209,7
-3512308,6641,Conchas,Conchas,1,3512308,23
-3512407,6642,Cordeirópolis,Cordeirópolis,1,3512407,10
-3512506,6643,Coroados,Coroados,0,3506508,36
-3512605,6644,Coronel Macedo,Coronel Macedo,0,3553807,24
-3512704,6645,Corumbataí,Corumbataí,0,3543907,9
-3512803,6646,Cosmópolis,Cosmópolis,1,3512803,8
-3512902,6647,Cosmorama,Cosmorama,0,3553401,16
-3513009,6648,Cotia,Cotia,1,3513009,52
-3513108,6649,Cravinhos,Cravinhos,1,3513108,41
-3513207,6650,Cristais Paulista,Cristais Paulista,0,3516200,38
-3513306,6651,Cruzália,Cruzália,0,3528809,26
-3513405,6652,Cruzeiro,Cruzeiro,1,3513405,48
-3513504,6653,Cubatão,Cubatão,1,3513504,1
-3513603,6654,Cunha,Cunha,1,3513603,48
-3513702,6655,Descalvado,Descalvado,1,3513702,12
-3513801,6656,Diadema,Diadema,1,3513801,2
-3513850,6657,Dirce Reis,Dirce Reis,0,3524808,55
-3513900,6658,Divinolândia,Divinolândia,0,3550803,43
-3514007,6659,Dobrada,Dobrada,0,3529302,13
-3514106,6660,Dois Córregos,Dois Córregos,1,3514106,33
-3514205,6661,Dolcinópolis,Dolcinópolis,0,3515202,18
-3514304,6662,Dourado,Dourado,0,3542909,12
-3514403,6663,Dracena,Dracena,1,3514403,29
-3514502,6664,Duartina,Duartina,1,3514502,32
-3514601,6665,Dumont,Dumont,0,3551702,41
-3514700,6666,Echaporã,Echaporã,0,3504008,26
-3514809,6667,Eldorado,Eldorado,1,3514809,21
-3514908,6668,Elias Fausto,Elias Fausto,0,3531803,34
-3514924,6669,Elisiário,Elisiário,0,3511102,15
-3514957,6670,Embaúba,Embaúba,0,3533908,14
-3515004,6671,Embu das Artes,Embu das Artes,1,3515004,52
-3515103,6672,Embu-Guaçu,Embu-Guaçu,1,3515103,52
-3515129,6673,Emilianópolis,Emilianópolis,0,3541208,27
-3515152,6674,Engenheiro Coelho,Engenheiro Coelho,0,3503802,7
-3515186,6675,Espírito Santo do Pinhal,Espírito Santo do Pinhal,1,3515186,50
-3515194,6676,Espírito Santo do Turvo,Espírito Santo do Turvo,0,3546405,25
-3557303,7148,Estiva Gerbi,Estiva Gerbi,0,3530706,7
-3515301,6678,Estrela do Norte,Estrela do Norte,0,3539202,27
-3515202,6677,Estrela dOeste,Estrela d'Oeste,1,3515202,18
-3515350,6679,Euclides da Cunha Paulista,Euclides da Cunha Paulista,0,3554300,28
-3515400,6680,Fartura,Fartura,1,3515400,24
-3515608,6682,Fernando Prestes,Fernando Prestes,0,3553708,42
-3515509,6681,Fernandópolis,Fernandópolis,1,3515509,18
-3515657,6683,Fernão,Fernão,0,3516606,31
-3515707,6684,Ferraz de Vasconcelos,Ferraz de Vasconcelos,1,3515707,45
-3515806,6685,Flora Rica,Flora Rica,0,3534906,29
-3515905,6686,Floreal,Floreal,0,3532603,17
-3516002,6687,Flórida Paulista,Flórida Paulista,1,3516002,30
-3516101,6688,Florínia,Florínea,0,3504008,26
-3516200,6689,Franca,Franca,1,3516200,38
-3516309,6690,Francisco Morato,Francisco Morato,1,3516309,5
-3516408,6691,Franco da Rocha,Franco da Rocha,1,3516408,5
-3516507,6692,Gabriel Monteiro,Gabriel Monteiro,0,3506409,36
-3516606,6693,Gália,Gália,1,3516606,31
-3516705,6694,Garça,Garça,1,3516705,31
-3516804,6695,Gastão Vidigal,Gastão Vidigal,0,3532603,17
-3516853,6696,Gavião Peixoto,Gavião Peixoto,0,3503208,13
-3516903,6697,General Salgado,General Salgado,1,3516903,18
-3517000,6698,Getulina,Getulina,1,3517000,35
-3517109,6699,Glicério,Glicério,0,3537305,36
-3517208,6700,Guaiçara,Guaiçara,0,3527108,35
-3517307,6701,Guaimbê,Guaimbê,0,3517000,35
-3517406,6702,Guaíra,Guaíra,1,3517406,14
-3517505,6703,Guapiaçu,Guapiaçu,0,3549805,16
-3517604,6704,Guapiara,Guapiara,0,3510203,22
-3517703,6705,Guará,Guará,1,3517703,40
-3517802,6706,Guaraçaí,Guaraçaí,0,3530102,37
-3517901,6707,Guaraci,Guaraci,0,3533908,14
-3518008,6708,Guarani d'Oeste,Guarani d'Oeste,0,3534757,18
-3518107,6709,Guarantã,Guarantã,0,3508801,35
-3518206,6710,Guararapes,Guararapes,1,3518206,36
-3518305,6711,Guararema,Guararema,1,3518305,45
-3518404,6712,Guaratinguetá,Guaratinguetá,1,3518404,48
-3518503,6713,Guareí,Guareí,0,3540507,22
-3518602,6714,Guariba,Guariba,1,3518602,42
-3518701,6715,Guarujá,Guarujá,1,3518701,1
-3518800,6716,Guarulhos,Guarulhos,1,3518800,44
-3518859,6717,Guatapará,Guatapará,0,3543402,41
-3518909,6718,Guzolândia,Guzolândia,0,3504206,55
-3519006,6719,Herculândia,Herculândia,0,3555000,30
-3519055,6720,Holambra,Holambra,0,3503802,7
-3519071,6721,Hortolândia,Hortolândia,1,3519071,53
-3519105,6722,Iacanga,Iacanga,1,3519105,13
-3519204,6723,Iacri,Iacri,0,3505807,30
-3519253,6724,Iaras,Iaras,0,3511409,24
-3519303,6725,Ibaté,Ibaté,1,3519303,12
-3519402,6726,Ibirá,Ibirá,0,3511102,15
-3519501,6727,Ibirarema,Ibirarema,0,3535309,26
-3519600,6728,Ibitinga,Ibitinga,1,3519600,13
-3519709,6729,Ibiúna,Ibiúna,1,3519709,19
-3519808,6730,Icém,Icém,0,3533007,16
-3519907,6731,Iepê,Iepê,1,3519907,27
-3520004,6732,Igaraçu do Tietê,Igaraçu do Tietê,0,3505302,33
-3520103,6733,Igarapava,Igarapava,1,3520103,40
-3520202,6734,Igaratá,Igaratá,0,3546801,44
-3520301,6735,Iguape,Iguape,1,3520301,21
-3520426,6737,Ilha Comprida,Ilha Comprida,0,3520301,21
-3520442,6738,Ilha Solteira,Ilha Solteira,1,3520442,37
-3520400,6736,Ilhabela,Ilhabela,1,3520400,51
-3520509,6739,Indaiatuba,Indaiatuba,1,3520509,20
-3520608,6740,Indiana,Indiana,0,3529203,27
-3520707,6741,Indiaporã,Indiaporã,0,3534757,18
-3520806,6742,Inúbia Paulista,Inúbia Paulista,0,3527405,30
-3520905,6743,Ipaussu,Ipaussu,1,3520905,25
-3521002,6744,Iperó,Iperó,0,3507001,20
-3521101,6745,Ipeúna,Ipeúna,0,3543907,9
-3521150,6746,Ipiguá,Ipiguá,0,3549805,16
-3521200,6747,Iporanga,Iporanga,0,3514809,21
-3521309,6748,Ipuã,Ipuã,1,3521309,40
-3521408,6749,Iracemápolis,Iracemápolis,0,3526902,10
-3521507,6750,Irapuã,Irapuã,0,3556008,15
-3521606,6751,Irapuru,Irapuru,0,3534906,29
-3521705,6752,Itaberá,Itaberá,1,3521705,49
-3521804,6753,Itaí,Itaí,1,3521804,24
-3521903,6754,Itajobi,Itajobi,1,3521903,15
-3522000,6755,Itaju,Itaju,0,3505203,33
-3522109,6756,Itanhaém,Itanhaém,1,3522109,56
-3522158,6757,Itaóca,Itaóca,0,3502705,49
-3522208,6758,Itapecerica da Serra,Itapecerica da Serra,1,3522208,52
-3522307,6759,Itapetininga,Itapetininga,1,3522307,22
-3522406,6760,Itapeva,Itapeva,1,3522406,49
-3522505,6761,Itapevi,Itapevi,1,3522505,52
-3522604,6762,Itapira,Itapira,1,3522604,7
-3522653,6763,Itapirapuã Paulista,Itapirapuã Paulista,0,3502705,49
-3522703,6764,Itápolis,Itápolis,1,3522703,13
-3522802,6765,Itaporanga,Itaporanga,1,3522802,49
-3522901,6766,Itapuí,Itapuí,0,3525300,33
-3523008,6767,Itapura,Itapura,0,3520442,37
-3523107,6768,Itaquaquecetuba,Itaquaquecetuba,1,3523107,45
-3523206,6769,Itararé,Itararé,1,3523206,49
-3523305,6770,Itariri,Itariri,1,3523305,56
-3523404,6771,Itatiba,Itatiba,1,3523404,5
-3523503,6772,Itatinga,Itatinga,1,3523503,23
-3523602,6773,Itirapina,Itirapina,1,3523602,9
-3523701,6774,Itirapuã,Itirapuã,0,3536307,38
-3523800,6775,Itobi,Itobi,0,3510807,43
-3523909,6776,Itu,Itu,1,3523909,20
-3524006,6777,Itupeva,Itupeva,1,3524006,5
-3524105,6778,Ituverava,Ituverava,1,3524105,40
-3524204,6779,Jaborandi,Jaborandi,0,3512001,14
-3524303,6780,Jaboticabal,Jaboticabal,1,3524303,42
-3524402,6781,Jacareí,Jacareí,1,3524402,46
-3524501,6782,Jaci,Jaci,0,3530300,16
-3524600,6783,Jacupiranga,Jacupiranga,1,3524600,21
-3524709,6784,Jaguariúna,Jaguariúna,1,3524709,54
-3524808,6785,Jales,Jales,1,3524808,55
-3524907,6786,Jambeiro,Jambeiro,0,3508504,47
-3525003,6787,Jandira,Jandira,1,3525003,4
-3525102,6788,Jardinópolis,Jardinópolis,1,3525102,41
-3525201,6789,Jarinu,Jarinu,1,3525201,6
-3525300,6790,Jaú,Jaú,1,3525300,33
-3525409,6791,Jeriquara,Jeriquara,0,3537008,38
-3525508,6792,Joanópolis,Joanópolis,0,3538600,6
-3525607,6793,João Ramalho,João Ramalho,0,3541703,26
-3525706,6794,José Bonifácio,José Bonifácio,1,3525706,16
-3525805,6795,Júlio Mesquita,Júlio Mesquita,0,3508801,35
-3525854,6796,Jumirim,Jumirim,0,3554508,34
-3525904,6797,Jundiaí,Jundiaí,1,3525904,5
-3526001,6798,Junqueirópolis,Junqueirópolis,1,3526001,29
-3526100,6799,Juquiá,Juquiá,1,3526100,21
-3526209,6800,Juquitiba,Juquitiba,0,3522208,52
-3526308,6801,Lagoinha,Lagoinha,0,3550001,47
-3526407,6802,Laranjal Paulista,Laranjal Paulista,1,3526407,34
-3526506,6803,Lavínia,Lavínia,0,3530102,37
-3526605,6804,Lavrinhas,Lavrinhas,0,3513405,48
-3526704,6805,Leme,Leme,1,3526704,11
-3526803,6806,Lençóis Paulista,Lençóis Paulista,1,3526803,32
-3526902,6807,Limeira,Limeira,1,3526902,10
-3527009,6808,Lindóia,Lindóia,0,3500501,54
-3527108,6809,Lins,Lins,1,3527108,35
-3527207,6810,Lorena,Lorena,1,3527207,48
-3527256,6811,Lourdes,Lourdes,0,3508108,36
-3527306,6812,Louveira,Louveira,1,3527306,5
-3527405,6813,Lucélia,Lucélia,1,3527405,30
-3527504,6814,Lucianópolis,Lucianópolis,0,3514502,32
-3527603,6815,Luís Antônio,Luiz Antônio,0,3550902,41
-3527702,6816,Luiziânia,Luiziânia,0,3537305,36
-3527801,6817,Lupércio,Lupércio,0,3516705,31
-3527900,6818,Lutécia,Lutécia,0,3535507,26
-3528007,6819,Macatuba,Macatuba,1,3528007,33
-3528106,6820,Macaubal,Macaubal,1,3528106,16
-3528205,6821,Macedônia,Macedônia,0,3515509,18
-3528304,6822,Magda,Magda,0,3532603,17
-3528403,6823,Mairinque,Mairinque,1,3528403,19
-3528502,6824,Mairiporã,Mairiporã,1,3528502,44
-3528601,6825,Manduri,Manduri,0,3538808,25
-3528700,6826,Marabá Paulista,Marabá Paulista,0,3541505,28
-3528809,6827,Maracaí,Maracaí,1,3528809,26
-3528858,6828,Marapoama,Marapoama,0,3521903,15
-3528908,6829,Mariápolis,Mariápolis,0,3500105,30
-3529005,6830,Marília,Marília,1,3529005,31
-3529104,6831,Marinópolis,Marinópolis,0,3535200,55
-3529203,6832,Martinópolis,Martinópolis,1,3529203,27
-3529302,6833,Matão,Matão,1,3529302,13
-3529401,6834,Mauá,Mauá,1,3529401,3
-3529500,6835,Mendonça,Mendonça,0,3525706,16
-3529609,6836,Meridiano,Meridiano,0,3515509,18
-3529658,6837,Mesópolis,Mesópolis,0,3524808,55
-3529708,6838,Miguelópolis,Miguelópolis,1,3529708,40
-3529807,6839,Mineiros do Tietê,Mineiros do Tietê,0,3525300,33
-3530003,6841,Mira Estrela,Mira Estrela,0,3510708,17
-3529906,6840,Miracatu,Miracatu,1,3529906,21
-3530102,6842,Mirandópolis,Mirandópolis,1,3530102,37
-3530201,6843,Mirante do Paranapanema,Mirante do Paranapanema,1,3530201,28
-3530300,6844,Mirassol,Mirassol,1,3530300,16
-3530409,6845,Mirassolândia,Mirassolândia,0,3530300,16
-3530508,6846,Mococa,Mococa,1,3530508,43
-3530706,6848,Mogi Guaçu,Mogi Guaçu,1,3530706,7
-3530607,6847,Mogi das Cruzes,Mogi das Cruzes,1,3530607,45
-3530805,6849,Mogi Mirim,Mogi Mirim,1,3530805,7
-3530904,6850,Mombuca,Mombuca,0,3510401,34
-3531001,6851,Monções,Monções,0,3532603,17
-3531100,6852,Mongaguá,Mongaguá,1,3531100,56
-3531209,6853,Monte Alegre do Sul,Monte Alegre do Sul,0,3501905,54
-3531308,6854,Monte Alto,Monte Alto,1,3531308,42
-3531407,6855,Monte Aprazível,Monte Aprazível,1,3531407,16
-3531506,6856,Monte Azul Paulista,Monte Azul Paulista,1,3531506,14
-3531605,6857,Monte Castelo,Monte Castelo,0,3555109,29
-3531803,6859,Monte Mor,Monte Mor,1,3531803,34
-3531704,6858,Monteiro Lobato,Monteiro Lobato,0,3549904,46
-3531902,6860,Morro Agudo,Morro Agudo,1,3531902,39
-3532009,6861,Morungaba,Morungaba,0,3523404,5
-3532058,6862,Motuca,Motuca,0,3501707,13
-3532108,6863,Murutinga do Sul,Murutinga do Sul,0,3502101,37
-3532157,6864,Nantes,Nantes,0,3519907,27
-3532207,6865,Narandiba,Narandiba,0,3539202,27
-3532306,6866,Natividade da Serra,Natividade da Serra,0,3535606,46
-3532405,6867,Nazaré Paulista,Nazaré Paulista,1,3532405,6
-3532504,6868,Neves Paulista,Neves Paulista,1,3532504,16
-3532603,6869,Nhandeara,Nhandeara,1,3532603,17
-3532702,6870,Nipoã,Nipoã,0,3531407,16
-3532801,6871,Nova Aliança,Nova Aliança,0,3540804,16
-3532827,6872,Nova Campina,Nova Campina,0,3522406,49
-3532843,6873,Nova Canaã Paulista,Nova Canaã Paulista,0,3546603,55
-3532868,6874,Nova Castilho,Nova Castilho,0,3516903,18
-3532900,6875,Nova Europa,Nova Europa,0,3503208,13
-3533007,6876,Nova Granada,Nova Granada,1,3533007,16
-3533106,6877,Nova Guataporanga,Nova Guataporanga,0,3555109,29
-3533205,6878,Nova Independência,Nova Independência,0,3502101,37
-3533304,6880,Nova Luzitânia,Nova Luzitânia,0,3532603,17
-3533403,6881,Nova Odessa,Nova Odessa,1,3533403,53
-3533254,6879,Novais,Novais,0,3552601,15
-3533502,6882,Novo Horizonte,Novo Horizonte,1,3533502,15
-3533601,6883,Nuporanga,Nuporanga,1,3533601,39
-3533700,6884,Ocauçu,Ocauçu,0,3529005,31
-3533809,6885,Óleo,Óleo,0,3538808,25
-3533908,6886,Olímpia,Olímpia,1,3533908,14
-3534005,6887,Onda Verde,Onda Verde,0,3533007,16
-3534104,6888,Oriente,Oriente,0,3540002,31
-3534203,6889,Orindiúva,Orindiúva,0,3536604,16
-3534302,6890,Orlândia,Orlândia,1,3534302,39
-3534401,6891,Osasco,Osasco,1,3534401,4
-3534500,6892,Oscar Bressane,Oscar Bressane,0,3535507,26
-3534609,6893,Osvaldo Cruz,Osvaldo Cruz,1,3534609,30
-3534708,6894,Ourinhos,Ourinhos,1,3534708,25
-3534807,6896,Ouro Verde,Ouro Verde,0,3514403,29
-3534757,6895,Ouroeste,Ouroeste,1,3534757,18
-3534906,6897,Pacaembu,Pacaembu,1,3534906,29
-3535002,6898,Palestina,Palestina,1,3535002,16
-3535101,6899,Palmares Paulista,Palmares Paulista,0,3545605,15
-3535200,6900,Palmeira d'Oeste,Palmeira d'Oeste,1,3535200,55
-3535309,6901,Palmital,Palmital,1,3535309,26
-3535408,6902,Panorama,Panorama,1,3535408,29
-3535507,6903,Paraguaçu Paulista,Paraguaçu Paulista,1,3535507,26
-3535606,6904,Paraibuna,Paraibuna,1,3535606,46
-3535705,6905,Paraíso,Paraíso,0,3531506,14
-3535804,6906,Paranapanema,Paranapanema,1,3535804,24
-3535903,6907,Paranapuã,Paranapuã,0,3524808,55
-3536000,6908,Parapuã,Parapuã,0,3534609,30
-3536109,6909,Pardinho,Pardinho,0,3507506,23
-3536208,6910,Pariquera-Açu,Pariquera-Açu,1,3536208,21
-3536257,6911,Parisi,Parisi,0,3557105,17
-3536307,6912,Patrocínio Paulista,Patrocínio Paulista,1,3536307,38
-3536406,6913,Paulicéia,Paulicéia,0,3535408,29
-3536505,6914,Paulínia,Paulínia,1,3536505,8
-3536570,6915,Paulistânia,Paulistânia,0,3500709,32
-3536604,6916,Paulo de Faria,Paulo de Faria,1,3536604,16
-3536703,6917,Pederneiras,Pederneiras,1,3536703,33
-3536802,6918,Pedra Bela,Pedra Bela,0,3507605,6
-3536901,6919,Pedranópolis,Pedranópolis,0,3515509,18
-3537008,6920,Pedregulho,Pedregulho,1,3537008,38
-3537107,6921,Pedreira,Pedreira,1,3537107,54
-3537156,6922,Pedrinhas Paulista,Pedrinhas Paulista,0,3528809,26
-3537206,6923,Pedro de Toledo,Pedro de Toledo,0,3523305,56
-3537305,6924,Penápolis,Penápolis,1,3537305,36
-3537404,6925,Pereira Barreto,Pereira Barreto,1,3537404,37
-3537503,6926,Pereiras,Pereiras,0,3512308,23
-3537602,6927,Peruíbe,Peruíbe,1,3537602,56
-3537701,6928,Piacatu,Piacatu,0,3506409,36
-3537800,6929,Piedade,Piedade,1,3537800,19
-3537909,6930,Pilar do Sul,Pilar do Sul,1,3537909,19
-3538006,6931,Pindamonhangaba,Pindamonhangaba,1,3538006,47
-3538105,6932,Pindorama,Pindorama,0,3511102,15
-3538204,6933,Pinhalzinho,Pinhalzinho,1,3538204,6
-3538303,6934,Piquerobi,Piquerobi,0,3547700,28
-3538501,6935,Piquete,Piquete,1,3538501,48
-3538600,6936,Piracaia,Piracaia,1,3538600,6
-3538709,6937,Piracicaba,Piracicaba,1,3538709,34
-3538808,6938,Piraju,Piraju,1,3538808,25
-3538907,6939,Pirajuí,Pirajuí,1,3538907,32
-3539004,6940,Pirangi,Pirangi,1,3539004,42
-3539103,6941,Pirapora do Bom Jesus,Pirapora do Bom Jesus,0,3547304,4
-3539202,6942,Pirapozinho,Pirapozinho,1,3539202,27
-3539301,6943,Pirassununga,Pirassununga,1,3539301,11
-3539400,6944,Piratininga,Piratininga,1,3539400,32
-3539509,6945,Pitangueiras,Pitangueiras,1,3539509,42
-3539608,6946,Planalto,Planalto,0,3508108,36
-3539707,6947,Platina,Platina,0,3535309,26
-3539806,6948,Poá,Poá,1,3539806,45
-3539905,6949,Poloni,Poloni,0,3531407,16
-3540002,6950,Pompéia,Pompéia,1,3540002,31
-3540101,6951,Pongaí,Pongaí,0,3538907,32
-3540200,6952,Pontal,Pontal,1,3540200,41
-3540259,6953,Pontalinda,Pontalinda,0,3524808,55
-3540309,6954,Pontes Gestal,Pontes Gestal,0,3510708,17
-3540408,6955,Populina,Populina,0,3515202,18
-3540507,6956,Porangaba,Porangaba,1,3540507,22
-3540606,6957,Porto Feliz,Porto Feliz,1,3540606,20
-3540705,6958,Porto Ferreira,Porto Ferreira,1,3540705,11
-3540754,6959,Potim,Potim,0,3502507,48
-3540804,6960,Potirendaba,Potirendaba,1,3540804,16
-3540853,6961,Pracinha,Pracinha,0,3527405,30
-3540903,6962,Pradópolis,Pradópolis,0,3518602,42
-3541000,6963,Praia Grande,Praia Grande,1,3541000,1
-3541059,6964,Pratânia,Pratânia,0,3550100,23
-3541109,6965,Presidente Alves,Presidente Alves,0,3538907,32
-3541208,6966,Presidente Bernardes,Presidente Bernardes,1,3541208,27
-3541307,6967,Presidente Epitácio,Presidente Epitácio,1,3541307,28
-3541406,6968,Presidente Prudente,Presidente Prudente,1,3541406,27
-3541505,6969,Presidente Venceslau,Presidente Venceslau,1,3541505,28
-3541604,6970,Promissão,Promissão,1,3541604,35
-3541653,6971,Quadra,Quadra,0,3554003,22
-3541703,6972,Quatá,Quatá,1,3541703,26
-3541802,6973,Queiroz,Queiroz,0,3555000,30
-3541901,6974,Queluz,Queluz,1,3541901,48
-3542008,6975,Quintana,Quintana,0,3540002,31
-3542107,6976,Rafard,Rafard,0,3510401,34
-3542206,6977,Rancharia,Rancharia,1,3542206,27
-3542305,6978,Redenção da Serra,Redenção da Serra,0,3554102,47
-3542404,6979,Regente Feijó,Regente Feijó,1,3542404,27
-3542503,6980,Reginópolis,Reginópolis,0,3538907,32
-3542602,6981,Registro,Registro,1,3542602,21
-3542701,6982,Restinga,Restinga,0,3516200,38
-3542800,6983,Ribeira,Ribeira,0,3502705,49
-3542909,6984,Ribeirão Bonito,Ribeirão Bonito,1,3542909,12
-3543006,6985,Ribeirão Branco,Ribeirão Branco,0,3522406,49
-3543105,6986,Ribeirão Corrente,Ribeirão Corrente,0,3516200,38
-3543204,6987,Ribeirão do Sul,Ribeirão do Sul,0,3534708,25
-3543238,6988,Ribeirão dos Índios,Ribeirão dos Índios,0,3547700,28
-3543253,6989,Ribeirão Grande,Ribeirão Grande,0,3510203,22
-3543303,6990,Ribeirão Pires,Ribeirão Pires,1,3543303,3
-3543402,6991,Ribeirão Preto,Ribeirão Preto,1,3543402,41
-3543600,6993,Rifaina,Rifaina,0,3537008,38
-3543709,6994,Rincão,Rincão,0,3501707,13
-3543808,6995,Rinópolis,Rinópolis,0,3555000,30
-3543907,6996,Rio Claro,Rio Claro,1,3543907,9
-3544004,6997,Rio das Pedras,Rio das Pedras,1,3544004,34
-3544103,6998,Rio Grande da Serra,Rio Grande da Serra,1,3544103,3
-3544202,6999,Riolândia,Riolândia,0,3536604,16
-3543501,6992,Riversul,Riversul,0,3522802,49
-3544251,7000,Rosana,Rosana,1,3544251,28
-3544301,7001,Roseira,Roseira,1,3544301,48
-3544400,7002,Rubiácea,Rubiácea,0,3518206,36
-3544509,7003,Rubinéia,Rubinéia,0,3546603,55
-3544608,7004,Sabino,Sabino,0,3527108,35
-3544707,7005,Sagres,Sagres,0,3534609,30
-3544806,7006,Sales,Sales,0,3556008,15
-3544905,7007,Sales Oliveira,Sales Oliveira,0,3533601,39
-3545001,7008,Salesópolis,Salesópolis,1,3545001,46
-3545100,7009,Salmourão,Salmourão,0,3534609,30
-3545159,7010,Saltinho,Saltinho,0,3538709,34
-3545209,7011,Salto,Salto,1,3545209,20
-3545308,7012,Salto de Pirapora,Salto de Pirapora,1,3545308,19
-3545407,7013,Salto Grande,Salto Grande,0,3534708,25
-3545506,7014,Sandovalina,Sandovalina,0,3539202,27
-3545605,7015,Santa Adélia,Santa Adélia,1,3545605,15
-3545704,7016,Santa Albertina,Santa Albertina,0,3524808,55
-3545803,7017,Santa Bárbara d'Oeste,Santa Bárbara d'Oeste,1,3545803,53
-3546009,7018,Santa Branca,Santa Branca,1,3546009,46
-3546108,7019,Santa Clara d'Oeste,Santa Clara d'Oeste,0,3546603,55
-3546207,7020,Santa Cruz da Conceição,Santa Cruz da Conceição,0,3526704,11
-3546256,7021,Santa Cruz da Esperança,Santa Cruz da Esperança,0,3509403,41
-3546306,7022,Santa Cruz das Palmeiras,Santa Cruz das Palmeiras,1,3546306,43
-3546405,7023,Santa Cruz do Rio Pardo,Santa Cruz do Rio Pardo,1,3546405,25
-3546504,7024,Santa Ernestina,Santa Ernestina,0,3553708,42
-3546603,7025,Santa Fé do Sul,Santa Fé do Sul,1,3546603,55
-3546702,7026,Santa Gertrudes,Santa Gertrudes,0,3543907,9
-3546801,7027,Santa Isabel,Santa Isabel,1,3546801,44
-3546900,7028,Santa Lúcia,Santa Lúcia,0,3501707,13
-3547007,7029,Santa Maria da Serra,Santa Maria da Serra,0,3550407,34
-3547106,7030,Santa Mercedes,Santa Mercedes,0,3535408,29
-3547502,7034,Santa Rita do Passa Quatro,Santa Rita do Passa Quatro,1,3547502,11
-3547403,7033,Santa Rita d'Oeste,Santa Rita d'Oeste,0,3546603,55
-3547601,7035,Santa Rosa de Viterbo,Santa Rosa de Viterbo,1,3547601,41
-3547650,7036,Santa Salete,Santa Salete,0,3555802,55
-3547205,7031,Santana da Ponte Pensa,Santana da Ponte Pensa,0,3546603,55
-3547304,7032,Santana de Parnaíba,Santana de Parnaíba,1,3547304,4
-3547700,7037,Santo Anastácio,Santo Anastácio,1,3547700,28
-3547809,7038,Santo André,Santo André,1,3547809,3
-3547908,7039,Santo Antônio da Alegria,Santo Antônio da Alegria,0,3501004,39
-3548005,7040,Santo Antônio de Posse,Santo Antônio de Posse,0,3524709,54
-3548054,7041,Santo Antônio do Aracanguá,Santo Antônio do Aracanguá,0,3502804,36
-3548104,7042,Santo Antônio do Jardim,Santo Antônio do Jardim,0,3515186,50
-3548203,7043,Santo Antônio do Pinhal,Santo Antônio do Pinhal,0,3548609,47
-3548302,7044,Santo Expedito,Santo Expedito,0,3541406,27
-3548401,7045,Santópolis do Aguapeí,Santópolis do Aguapeí,0,3506508,36
-3548500,7046,Santos,Santos,1,3548500,1
-3548609,7047,São Bento do Sapucaí,São Bento do Sapucaí,1,3548609,47
-3548708,7048,São Bernardo do Campo,São Bernardo do Campo,1,3548708,2
-3548807,7049,São Caetano do Sul,São Caetano do Sul,1,3548807,3
-3548906,7050,São Carlos,São Carlos,1,3548906,12
-3549003,7051,São Francisco,São Francisco,0,3535200,55
-3549102,7052,São João da Boa Vista,São João da Boa Vista,1,3549102,50
-3549201,7053,São João das Duas Pontes,São João das Duas Pontes,0,3515202,18
-3549250,7054,São João de Iracema,São João de Iracema,0,3516903,18
-3549300,7055,São João do Pau d'Alho,São João do Pau d'Alho,0,3555109,29
-3549409,7056,São Joaquim da Barra,São Joaquim da Barra,1,3549409,40
-3549508,7057,São José da Bela Vista,São José da Bela Vista,0,3516200,38
-3549607,7058,São José do Barreiro,São José do Barreiro,0,3504909,48
-3549706,7059,São José do Rio Pardo,São José do Rio Pardo,1,3549706,43
-3549805,7060,São José do Rio Preto,São José do Rio Preto,1,3549805,16
-3549904,7061,São José dos Campos,São José dos Campos,1,3549904,46
-3549953,7062,São Lourenço da Serra,São Lourenço da Serra,0,3522208,52
-3550001,7063,São Luiz do Paraitinga,São Luiz do Paraitinga,1,3550001,47
-3550100,7064,São Manuel,São Manuel,1,3550100,23
-3550209,7065,São Miguel Arcanjo,São Miguel Arcanjo,1,3550209,22
-3550308,7066,São Paulo,São Paulo,1,3550308,0
-3550407,7067,São Pedro,São Pedro,1,3550407,34
-3550506,7068,São Pedro do Turvo,São Pedro do Turvo,0,3546405,25
-3550605,7069,São Roque,São Roque,1,3550605,19
-3550704,7070,São Sebastião,São Sebastião,1,3550704,51
-3550803,7071,São Sebastião da Grama,São Sebastião da Grama,1,3550803,43
-3550902,7072,São Simão,São Simão,1,3550902,41
-3551009,7073,São Vicente,São Vicente,1,3551009,1
-3551108,7074,Sarapuí,Sarapuí,0,3522307,22
-3551207,7075,Sarutaiá,Sarutaiá,0,3538808,25
-3551306,7076,Sebastianópolis do Sul,Sebastianópolis do Sul,0,3528106,16
-3551405,7077,Serra Azul,Serra Azul,0,3513108,41
-3551603,7079,Serra Negra,Serra Negra,1,3551603,54
-3551504,7078,Serrana,Serrana,1,3551504,41
-3551702,7080,Sertãozinho,Sertãozinho,1,3551702,41
-3551801,7081,Sete Barras,Sete Barras,0,3542602,21
-3551900,7082,Severínia,Severínia,0,3533908,14
-3552007,7083,Silveiras,Silveiras,0,3508603,48
-3552106,7084,Socorro,Socorro,1,3552106,54
-3552205,7085,Sorocaba,Sorocaba,1,3552205,19
-3552304,7086,Sud Mennucci,Sud Mennucci,0,3537404,37
-3552403,7087,Sumaré,Sumaré,1,3552403,53
-3552551,7089,Suzanápolis,Suzanápolis,0,3537404,37
-3552502,7088,Suzano,Suzano,1,3552502,45
-3552601,7090,Tabapuã,Tabapuã,1,3552601,15
-3552700,7091,Tabatinga,Tabatinga,0,3519600,13
-3552809,7092,Taboão da Serra,Taboão da Serra,1,3552809,52
-3552908,7093,Taciba,Taciba,0,3542404,27
-3553005,7094,Taguaí,Taguaí,0,3515400,24
-3553104,7095,Taiaçu,Taiaçu,0,3524303,42
-3553203,7096,Taiúva,Taiúva,0,3524303,42
-3553302,7097,Tambaú,Tambaú,1,3553302,43
-3553401,7098,Tanabi,Tanabi,1,3553401,16
-3553500,7099,Tapiraí,Tapiraí,0,3537800,19
-3553609,7100,Tapiratiba,Tapiratiba,0,3508702,43
-3553658,7101,Taquaral,Taquaral,0,3539509,42
-3553708,7102,Taquaritinga,Taquaritinga,1,3553708,42
-3553807,7103,Taquarituba,Taquarituba,1,3553807,24
-3553856,7104,Taquarivaí,Taquarivaí,0,3522406,49
-3553906,7105,Tarabai,Tarabai,0,3539202,27
-3553955,7106,Tarumã,Tarumã,0,3504008,26
-3554003,7107,Tatuí,Tatuí,1,3554003,22
-3554102,7108,Taubaté,Taubaté,1,3554102,47
-3554201,7109,Tejupá,Tejupá,0,3538808,25
-3554300,7110,Teodoro Sampaio,Teodoro Sampaio,1,3554300,28
-3554409,7111,Terra Roxa,Terra Roxa,0,3556800,14
-3554508,7112,Tietê,Tietê,1,3554508,34
-3554607,7113,Timburi,Timburi,0,3538808,25
-3554656,7114,Torre de Pedra,Torre de Pedra,0,3540507,22
-3554706,7115,Torrinha,Torrinha,0,3507902,9
-3554755,7116,Trabiju,Trabiju,0,3542909,12
-3554805,7117,Tremembé,Tremembé,1,3554805,47
-3554904,7118,Três Fronteiras,Três Fronteiras,0,3546603,55
-3554953,7119,Tuiuti,Tuiuti,0,3507605,6
-3555000,7120,Tupã,Tupã,1,3555000,30
-3555109,7121,Tupi Paulista,Tupi Paulista,1,3555109,29
-3555208,7122,Turiúba,Turiúba,0,3508108,36
-3555307,7123,Turmalina,Turmalina,0,3515202,18
-3555356,7124,Ubarana,Ubarana,0,3525706,16
-3555406,7125,Ubatuba,Ubatuba,1,3555406,51
-3555505,7126,Ubirajara,Ubirajara,0,3514502,32
-3555604,7127,Uchoa,Uchoa,0,3549805,16
-3555703,7128,União Paulista,União Paulista,0,3528106,16
-3555802,7129,Urânia,Urânia,1,3555802,55
-3555901,7130,Uru,Uru,0,3538907,32
-3556008,7131,Urupês,Urupês,1,3556008,15
-3556107,7132,Valentim Gentil,Valentim Gentil,0,3557105,17
-3556206,7133,Valinhos,Valinhos,1,3556206,8
-3556305,7134,Valparaíso,Valparaíso,1,3556305,36
-3556354,7135,Vargem,Vargem,0,3507605,6
-3556404,7136,Vargem Grande do Sul,Vargem Grande do Sul,1,3556404,50
-3556453,7137,Vargem Grande Paulista,Vargem Grande Paulista,1,3556453,52
-3556503,7138,Várzea Paulista,Várzea Paulista,1,3556503,5
-3556602,7139,Vera Cruz,Vera Cruz,0,3529005,31
-3556701,7140,Vinhedo,Vinhedo,1,3556701,5
-3556800,7141,Viradouro,Viradouro,1,3556800,14
-3556909,7142,Vista Alegre do Alto,Vista Alegre do Alto,0,3539004,42
-3556958,7143,Vitória Brasil,Vitória Brasil,0,3524808,55
-3557006,7144,Votorantim,Votorantim,1,3557006,19
-3557105,7145,Votuporanga,Votuporanga,1,3557105,17
-3557154,7146,Zacarias,Zacarias,0,3508108,36
+id_municipio_tjsp,municipio_tjsp
+6504,Adamantina
+6505,Adolfo
+6506,Aguaí
+6511,Agudos
+6512,Alambari
+6513,Alfredo Marcondes
+6514,Altair
+6515,Altinópolis
+6516,Alto Alegre
+6517,Alumínio
+6521,Alvinlândia
+6522,Americana
+6523,Américo Brasiliense
+6524,Américo de Campos
+6525,Amparo
+6526,Analândia
+6527,Andradina
+6528,Angatuba
+6529,Anhembi
+6530,Anhumas
+6531,Aparecida
+6532,Aparecida d'Oeste
+6533,Apiaí
+6534,Araçariguama
+6535,Araçatuba
+6536,Araçoiaba da Serra
+6537,Aramina
+6538,Arandu
+6539,Arapeí
+6540,Araraquara
+6541,Araras
+6542,Arco-Íris
+6543,Arealva
+6544,Areias
+6545,Areiópolis
+6546,Ariranha
+6547,Artur Nogueira
+6548,Arujá
+6549,Aspásia
+6550,Assis
+6551,Atibaia
+6552,Auriflama
+6553,Avaí
+6554,Avanhandava
+6555,Avaré
+6507,Águas da Prata
+6508,Águas de Lindóia
+6509,Águas de Santa Bárbara
+6510,Águas de São Pedro
+6518,Álvares Florence
+6519,Álvares Machado
+6520,Álvaro de Carvalho
+6556,Bady Bassitt
+6557,Balbinos
+6559,Bananal
+6560,Barão de Antonina
+6561,Barbosa
+6562,Bariri
+6563,Barra Bonita
+6564,Barra do Chapéu
+6565,Barra do Turvo
+6566,Barretos
+6567,Barrinha
+6568,Barueri
+6569,Bastos
+6570,Batatais
+6571,Bauru
+6558,Bálsamo
+6572,Bebedouro
+6573,Bento de Abreu
+6574,Bernardino de Campos
+6575,Bertioga
+6576,Bilac
+6577,Birigui
+6578,Biritiba-Mirim
+6579,Boa Esperança do Sul
+6580,Bocaina
+6581,Bofete
+6582,Boituva
+6583,Bom Jesus dos Perdões
+6584,Bom Sucesso de Itararé
+6586,Boracéia
+6585,Borá
+6587,Borborema
+6588,Borebi
+6589,Botucatu
+6590,Bragança Paulista
+6591,Braúna
+6592,Brejo Alegre
+6593,Brodowski
+6594,Brotas
+6595,Buri
+6596,Buritama
+6597,Buritizal
+6598,Cabrália Paulista
+6599,Cabreúva
+6601,Cachoeira Paulista
+6602,Caconde
+6600,Caçapava
+6603,Cafelândia
+6604,Caiabu
+6605,Caieiras
+6606,Caiuá
+6607,Cajamar
+6608,Cajati
+6609,Cajobi
+6610,Cajuru
+6611,Campina do Monte Alegre
+6612,Campinas
+6613,Campo Limpo Paulista
+6615,Campos Novos Paulista
+6614,Campos do Jordão
+6616,Cananéia
+6617,Canas
+6620,Canitar
+6621,Capão Bonito
+6622,Capela do Alto
+6623,Capivari
+6624,Caraguatatuba
+6625,Carapicuíba
+6626,Cardoso
+6627,Casa Branca
+6629,Castilho
+6630,Catanduva
+6631,Catiguá
+6628,Cássia dos Coqueiros
+6618,Cândido Mota
+6619,Cândido Rodrigues
+6632,Cedral
+6633,Cerqueira César
+6634,Cerquilho
+6635,Cesário Lange
+6636,Charqueada
+7147,Chavantes
+6637,Clementina
+6638,Colina
+6639,Colômbia
+6640,Conchal
+6641,Conchas
+6642,Cordeirópolis
+6643,Coroados
+6644,Coronel Macedo
+6645,Corumbataí
+6647,Cosmorama
+6646,Cosmópolis
+6648,Cotia
+6649,Cravinhos
+6650,Cristais Paulista
+6651,Cruzália
+6652,Cruzeiro
+6653,Cubatão
+6654,Cunha
+6655,Descalvado
+6656,Diadema
+6657,Dirce Reis
+6658,Divinolândia
+6659,Dobrada
+6660,Dois Córregos
+6661,Dolcinópolis
+6662,Dourado
+6663,Dracena
+6664,Duartina
+6665,Dumont
+6666,Echaporã
+6667,Eldorado
+6668,Elias Fausto
+6669,Elisiário
+6670,Embaúba
+6671,Embu das Artes
+6672,Embu-Guaçu
+6673,Emilianópolis
+6674,Engenheiro Coelho
+6675,Espírito Santo do Pinhal
+6676,Espírito Santo do Turvo
+7148,Estiva Gerbi
+6677,Estrela dOeste
+6678,Estrela do Norte
+6679,Euclides da Cunha Paulista
+6680,Fartura
+6682,Fernando Prestes
+6681,Fernandópolis
+6683,Fernão
+6684,Ferraz de Vasconcelos
+6685,Flora Rica
+6686,Floreal
+6688,Florínia
+6687,Flórida Paulista
+6689,Franca
+6690,Francisco Morato
+6691,Franco da Rocha
+6692,Gabriel Monteiro
+6694,Garça
+6695,Gastão Vidigal
+6696,Gavião Peixoto
+6693,Gália
+6697,General Salgado
+6698,Getulina
+6699,Glicério
+6700,Guaiçara
+6701,Guaimbê
+6702,Guaíra
+6703,Guapiaçu
+6704,Guapiara
+6707,Guaraci
+6706,Guaraçaí
+6708,Guarani d'Oeste
+6709,Guarantã
+6710,Guararapes
+6711,Guararema
+6712,Guaratinguetá
+6705,Guará
+6713,Guareí
+6714,Guariba
+6715,Guarujá
+6716,Guarulhos
+6717,Guatapará
+6718,Guzolândia
+6719,Herculândia
+6720,Holambra
+6721,Hortolândia
+6722,Iacanga
+6723,Iacri
+6724,Iaras
+6725,Ibaté
+6727,Ibirarema
+6726,Ibirá
+6728,Ibitinga
+6729,Ibiúna
+6730,Icém
+6731,Iepê
+6732,Igaraçu do Tietê
+6733,Igarapava
+6734,Igaratá
+6735,Iguape
+6737,Ilha Comprida
+6738,Ilha Solteira
+6736,Ilhabela
+6739,Indaiatuba
+6740,Indiana
+6741,Indiaporã
+6742,Inúbia Paulista
+6743,Ipaussu
+6744,Iperó
+6745,Ipeúna
+6746,Ipiguá
+6747,Iporanga
+6748,Ipuã
+6749,Iracemápolis
+6750,Irapuã
+6751,Irapuru
+6752,Itaberá
+6753,Itaí
+6754,Itajobi
+6755,Itaju
+6756,Itanhaém
+6757,Itaóca
+6758,Itapecerica da Serra
+6759,Itapetininga
+6760,Itapeva
+6761,Itapevi
+6762,Itapira
+6763,Itapirapuã Paulista
+6765,Itaporanga
+6766,Itapuí
+6767,Itapura
+6768,Itaquaquecetuba
+6769,Itararé
+6770,Itariri
+6771,Itatiba
+6772,Itatinga
+6764,Itápolis
+6773,Itirapina
+6774,Itirapuã
+6775,Itobi
+6776,Itu
+6777,Itupeva
+6778,Ituverava
+6779,Jaborandi
+6780,Jaboticabal
+6781,Jacareí
+6782,Jaci
+6783,Jacupiranga
+6784,Jaguariúna
+6785,Jales
+6786,Jambeiro
+6787,Jandira
+6788,Jardinópolis
+6789,Jarinu
+6790,Jaú
+6791,Jeriquara
+6792,Joanópolis
+6793,João Ramalho
+6794,José Bonifácio
+6796,Jumirim
+6797,Jundiaí
+6798,Junqueirópolis
+6799,Juquiá
+6800,Juquitiba
+6795,Júlio Mesquita
+6801,Lagoinha
+6802,Laranjal Paulista
+6803,Lavínia
+6804,Lavrinhas
+6805,Leme
+6806,Lençóis Paulista
+6807,Limeira
+6808,Lindóia
+6809,Lins
+6810,Lorena
+6811,Lourdes
+6812,Louveira
+6813,Lucélia
+6814,Lucianópolis
+6816,Luiziânia
+6815,Luís Antônio
+6817,Lupércio
+6818,Lutécia
+6819,Macatuba
+6820,Macaubal
+6821,Macedônia
+6822,Magda
+6823,Mairinque
+6824,Mairiporã
+6825,Manduri
+6826,Marabá Paulista
+6827,Maracaí
+6828,Marapoama
+6829,Mariápolis
+6831,Marinópolis
+6830,Marília
+6832,Martinópolis
+6833,Matão
+6834,Mauá
+6835,Mendonça
+6836,Meridiano
+6837,Mesópolis
+6838,Miguelópolis
+6839,Mineiros do Tietê
+6841,Mira Estrela
+6840,Miracatu
+6842,Mirandópolis
+6843,Mirante do Paranapanema
+6844,Mirassol
+6845,Mirassolândia
+6846,Mococa
+6848,Mogi Guaçu
+6849,Mogi Mirim
+6847,Mogi das Cruzes
+6850,Mombuca
+6851,Monções
+6852,Mongaguá
+6853,Monte Alegre do Sul
+6854,Monte Alto
+6855,Monte Aprazível
+6856,Monte Azul Paulista
+6857,Monte Castelo
+6859,Monte Mor
+6858,Monteiro Lobato
+6860,Morro Agudo
+6861,Morungaba
+6862,Motuca
+6863,Murutinga do Sul
+6864,Nantes
+6865,Narandiba
+6866,Natividade da Serra
+6867,Nazaré Paulista
+6868,Neves Paulista
+6869,Nhandeara
+6870,Nipoã
+6871,Nova Aliança
+6872,Nova Campina
+6873,Nova Canaã Paulista
+6874,Nova Castilho
+6875,Nova Europa
+6876,Nova Granada
+6877,Nova Guataporanga
+6878,Nova Independência
+6880,Nova Luzitânia
+6881,Nova Odessa
+6879,Novais
+6882,Novo Horizonte
+6883,Nuporanga
+6884,Ocauçu
+6886,Olímpia
+6887,Onda Verde
+6888,Oriente
+6889,Orindiúva
+6890,Orlândia
+6891,Osasco
+6892,Oscar Bressane
+6893,Osvaldo Cruz
+6894,Ourinhos
+6896,Ouro Verde
+6895,Ouroeste
+6885,Óleo
+6897,Pacaembu
+6898,Palestina
+6899,Palmares Paulista
+6900,Palmeira d'Oeste
+6901,Palmital
+6902,Panorama
+6903,Paraguaçu Paulista
+6904,Paraibuna
+6905,Paraíso
+6906,Paranapanema
+6907,Paranapuã
+6908,Parapuã
+6909,Pardinho
+6910,Pariquera-Açu
+6911,Parisi
+6912,Patrocínio Paulista
+6913,Paulicéia
+6915,Paulistânia
+6914,Paulínia
+6916,Paulo de Faria
+6917,Pederneiras
+6918,Pedra Bela
+6919,Pedranópolis
+6920,Pedregulho
+6921,Pedreira
+6922,Pedrinhas Paulista
+6923,Pedro de Toledo
+6924,Penápolis
+6925,Pereira Barreto
+6926,Pereiras
+6927,Peruíbe
+6928,Piacatu
+6929,Piedade
+6930,Pilar do Sul
+6931,Pindamonhangaba
+6932,Pindorama
+6933,Pinhalzinho
+6934,Piquerobi
+6935,Piquete
+6936,Piracaia
+6937,Piracicaba
+6938,Piraju
+6939,Pirajuí
+6940,Pirangi
+6941,Pirapora do Bom Jesus
+6942,Pirapozinho
+6943,Pirassununga
+6944,Piratininga
+6945,Pitangueiras
+6946,Planalto
+6947,Platina
+6948,Poá
+6949,Poloni
+6950,Pompéia
+6951,Pongaí
+6952,Pontal
+6953,Pontalinda
+6954,Pontes Gestal
+6955,Populina
+6956,Porangaba
+6957,Porto Feliz
+6958,Porto Ferreira
+6959,Potim
+6960,Potirendaba
+6961,Pracinha
+6962,Pradópolis
+6963,Praia Grande
+6964,Pratânia
+6965,Presidente Alves
+6966,Presidente Bernardes
+6967,Presidente Epitácio
+6968,Presidente Prudente
+6969,Presidente Venceslau
+6970,Promissão
+6971,Quadra
+6972,Quatá
+6973,Queiroz
+6974,Queluz
+6975,Quintana
+6976,Rafard
+6977,Rancharia
+6978,Redenção da Serra
+6979,Regente Feijó
+6980,Reginópolis
+6981,Registro
+6982,Restinga
+6983,Ribeira
+6984,Ribeirão Bonito
+6985,Ribeirão Branco
+6986,Ribeirão Corrente
+6989,Ribeirão Grande
+6990,Ribeirão Pires
+6991,Ribeirão Preto
+6987,Ribeirão do Sul
+6988,Ribeirão dos Índios
+6993,Rifaina
+6994,Rincão
+6995,Rinópolis
+6996,Rio Claro
+6998,Rio Grande da Serra
+6997,Rio das Pedras
+6999,Riolândia
+6992,Riversul
+7000,Rosana
+7001,Roseira
+7002,Rubiácea
+7003,Rubinéia
+7004,Sabino
+7005,Sagres
+7006,Sales
+7007,Sales Oliveira
+7008,Salesópolis
+7009,Salmourão
+7010,Saltinho
+7011,Salto
+7013,Salto Grande
+7012,Salto de Pirapora
+7014,Sandovalina
+7015,Santa Adélia
+7016,Santa Albertina
+7017,Santa Bárbara d'Oeste
+7018,Santa Branca
+7019,Santa Clara d'Oeste
+7020,Santa Cruz da Conceição
+7021,Santa Cruz da Esperança
+7022,Santa Cruz das Palmeiras
+7023,Santa Cruz do Rio Pardo
+7024,Santa Ernestina
+7025,Santa Fé do Sul
+7026,Santa Gertrudes
+7027,Santa Isabel
+7028,Santa Lúcia
+7029,Santa Maria da Serra
+7030,Santa Mercedes
+7033,Santa Rita d'Oeste
+7034,Santa Rita do Passa Quatro
+7035,Santa Rosa de Viterbo
+7036,Santa Salete
+7031,Santana da Ponte Pensa
+7032,Santana de Parnaíba
+7037,Santo Anastácio
+7038,Santo André
+7039,Santo Antônio da Alegria
+7040,Santo Antônio de Posse
+7041,Santo Antônio do Aracanguá
+7042,Santo Antônio do Jardim
+7043,Santo Antônio do Pinhal
+7044,Santo Expedito
+7046,Santos
+7045,Santópolis do Aguapeí
+7074,Sarapuí
+7075,Sarutaiá
+7047,São Bento do Sapucaí
+7048,São Bernardo do Campo
+7049,São Caetano do Sul
+7050,São Carlos
+7051,São Francisco
+7056,São Joaquim da Barra
+7052,São João da Boa Vista
+7053,São João das Duas Pontes
+7054,São João de Iracema
+7055,São João do Pau d'Alho
+7057,São José da Bela Vista
+7058,São José do Barreiro
+7059,São José do Rio Pardo
+7060,São José do Rio Preto
+7061,São José dos Campos
+7062,São Lourenço da Serra
+7063,São Luiz do Paraitinga
+7064,São Manuel
+7065,São Miguel Arcanjo
+7066,São Paulo
+7067,São Pedro
+7068,São Pedro do Turvo
+7069,São Roque
+7070,São Sebastião
+7071,São Sebastião da Grama
+7072,São Simão
+7073,São Vicente
+7076,Sebastianópolis do Sul
+7077,Serra Azul
+7079,Serra Negra
+7078,Serrana
+7080,Sertãozinho
+7081,Sete Barras
+7082,Severínia
+7083,Silveiras
+7084,Socorro
+7085,Sorocaba
+7086,Sud Mennucci
+7087,Sumaré
+7089,Suzanápolis
+7088,Suzano
+7090,Tabapuã
+7091,Tabatinga
+7092,Taboão da Serra
+7093,Taciba
+7094,Taguaí
+7095,Taiaçu
+7096,Taiúva
+7097,Tambaú
+7098,Tanabi
+7099,Tapiraí
+7100,Tapiratiba
+7101,Taquaral
+7102,Taquaritinga
+7103,Taquarituba
+7104,Taquarivaí
+7105,Tarabai
+7106,Tarumã
+7107,Tatuí
+7108,Taubaté
+7109,Tejupá
+7110,Teodoro Sampaio
+7111,Terra Roxa
+7112,Tietê
+7113,Timburi
+7114,Torre de Pedra
+7115,Torrinha
+7116,Trabiju
+7117,Tremembé
+7118,Três Fronteiras
+7119,Tuiuti
+7120,Tupã
+7121,Tupi Paulista
+7122,Turiúba
+7123,Turmalina
+7124,Ubarana
+7125,Ubatuba
+7126,Ubirajara
+7127,Uchoa
+7128,União Paulista
+7129,Urânia
+7130,Uru
+7131,Urupês
+7132,Valentim Gentil
+7133,Valinhos
+7134,Valparaíso
+7135,Vargem
+7137,Vargem Grande Paulista
+7136,Vargem Grande do Sul
+7138,Várzea Paulista
+7139,Vera Cruz
+7140,Vinhedo
+7141,Viradouro
+7142,Vista Alegre do Alto
+7143,Vitória Brasil
+7144,Votorantim
+7145,Votuporanga
+7146,Zacarias
