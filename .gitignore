@@ -1,7 +1,10 @@
 # IDEs
-#.vscode/
+.vscode/
 .idea/
 .vs/
+
+# Pastas
+_lixo/
 
 # Scrapy
 .wdm/
