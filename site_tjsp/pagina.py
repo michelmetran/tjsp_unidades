@@ -202,6 +202,9 @@ class QuemSomos:
         df = df.iloc[df["comarca_tjsp"].str.normalize("NFKD").argsort()]
         df = df.reset_index(drop=True)
 
+        # Aplica strip em tudo
+        df = df.map(lambda x: x.strip() if isinstance(x, str) else x)
+
         # Results
         comarcas = df["comarca_tjsp"]
         print(f"São {len(set(comarcas))} comarcas")

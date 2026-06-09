@@ -6,6 +6,8 @@ _summary_
 :rtype: _type_
 """
 
+import concurrent.futures
+
 import open_geodata as geo
 import pandas as pd
 import requests
@@ -81,7 +83,19 @@ class ListarMunicipios:
         print(f"São {len(list_termos)} termos para pesquisa")
         return list_termos
 
-    def request(self, access_key_id, access_key_secret) -> pd.DataFrame:
+    def request(self):
+        MAX_THREADS = 5
+
+        with concurrent.futures.ThreadPoolExecutor(max_workers=MAX_THREADS) as executor:
+            temp = executor.map(self.get_lista_municipios_tjsp, self.list_termos)
+            df_tjsp = pd.concat(list(temp), ignore_index=True)
+
+        # Resultados
+        # df_tjsp.info()
+        # df_tjsp.head()
+        self.df_tjsp = df_tjsp
+
+    def request_aws(self, access_key_id, access_key_secret) -> pd.DataFrame:
         # Cria Gateway
         gateway = ApiGateway(
             site="https://www.tjsp.jus.br",
@@ -132,12 +146,20 @@ class ListarMunicipios:
 
         # Ajusta a tabela
         df = df.drop_duplicates()
-        df = df.sort_values(by="municipio_tjsp")
+
+        # Ordena a tabela
         df = df.iloc[df["municipio_tjsp"].str.normalize("NFKD").argsort()]
+
+        # Reseta Índice
         df = df.reset_index(drop=True)
+
+        # Aplica strip em tudo
+        df = df.map(lambda x: x.strip() if isinstance(x, str) else x)
 
         if len(df) != 645:
             raise Exception("Falta Município!")
+
+
 
         # Resultados
         return df
@@ -145,6 +167,12 @@ class ListarMunicipios:
 
 class MunicipiosTJSP:
     def __init__(self, df_municipios) -> None:
+        """
+        Classe para tratar a tabela
+
+        :param df_municipios: _description_
+        :type df_municipios: _type_
+        """
         self.df_municipios = df_municipios
 
     @property
@@ -180,20 +208,20 @@ class MunicipiosTJSP:
         if not isinstance(self.nomes_corretos, pd.DataFrame):
             raise Exception("Precisa chamar tabela antes")
 
+        df = self.df_municipios
+
         # Crio Cópia da Coluna
-        self.df_municipios["municipio_tjsp_corrigido"] = self.df_municipios[
-            "municipio_tjsp"
-        ]
+        df["municipio_tjsp_corrigido"] = df["municipio_tjsp"]
 
         # Renomeia Municípios com Dicionário
-        self.df_municipios["municipio_tjsp_corrigido"] = self.df_municipios[
-            "municipio_tjsp_corrigido"
-        ].replace(dict_replace)
+        df["municipio_tjsp_corrigido"] = df["municipio_tjsp_corrigido"].replace(
+            dict_replace
+        )
 
         # Merge
         df_municipios = pd.merge(
             left=self.nomes_corretos,
-            right=self.df_municipios,
+            right=df,
             left_on="municipio_nome",
             right_on="municipio_tjsp_corrigido",
             how="left",
@@ -215,22 +243,27 @@ class MunicipiosTJSP:
         :return: _description_
         :rtype: _type_
         """
+        df = self.df_municipios
+
         # Deleta Colunas
-        df_municipios = self.df_municipios.drop(
+        df = df.drop(
             labels="municipio_nome",
             axis="columns",
             inplace=False,
             errors="ignore",
         )
 
+        # Renomeia Colunas
+        df = df.rename({"id_municipio": "id_municipio_ibge"}, axis="columns")
+
         # Reordena
-        df_municipios = df_municipios[
+        df = df[
             [
-                "id_municipio",
+                "id_municipio_ibge",
                 "id_municipio_tjsp",
-                "municipio_nome",
-                "municipio_tjsp",
+                # "municipio_nome",
                 "municipio_tjsp_corrigido",
+                "municipio_tjsp",
             ]
         ]
-        return df_municipios
+        return df
