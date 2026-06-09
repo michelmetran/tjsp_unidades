@@ -5,8 +5,8 @@ mar.23
 
 from pathlib import Path
 
-project_path = Path(__file__).parents[1]
-# module_path = Path(__file__).parents[0]
+project_path = Path(__file__).parents[0]
+#module_path = Path(__file__).parents[0]
 
 # Data
 data_path = project_path / "data"
