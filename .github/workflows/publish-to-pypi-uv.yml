@@ -2,7 +2,6 @@ name: Publish Python to PyPI
 
 on: push
 
-
 jobs:
   build-n-publish:
     name: Build and Publish Python UV 🐍 distributions 📦 to PyPI

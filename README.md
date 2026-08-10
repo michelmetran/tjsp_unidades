@@ -1,6 +1,6 @@
 # Tribunal de Justiça de São Paulo (TJSP)
 
-[GitHub](https://github.com/open-geodata/sp_tjsp_divadmin) | [PyPI](https://pypi.org/project/sp-tjsp-divadmin)
+[GitHub](https://github.com/michelmetran/sp_tjsp_divadmin) | [PyPI](https://pypi.org/project/sp-tjsp-divadmin)
 
 <br>
 

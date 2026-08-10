@@ -14,3 +14,9 @@ dependencies = [
     "requests-ip-rotator>=1.0.18",
     "xlrd>=2.0.2",
 ]
+
+[dependency-groups]
+docs = [
+    "mkdocs>=1.6.1",
+    "mkdocs-material[imaging]>=9.7.7",
+]
