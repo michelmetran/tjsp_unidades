@@ -34,7 +34,12 @@ build-backend = "hatchling.build"
 [tool.hatch.build.targets.wheel]
 # Informa ao Hatchling exatamente onde está o código do pacote
 packages = ["tjsp_unidades"]
-
-[tool.hatch.build.targets.wheel]
 # Força a inclusão de todos os CSVs dentro da pasta data no wheel final
 artifacts = ["**/data/*.csv", "**/data/**/*.csv"]
+
+
+[project.urls]
+Issues = "https://github.com/michelmetran/pyCFM/issues/"
+Documentation = "https://pycfm.readthedocs.io/pt/latest/"
+Repository = "https://github.com/michelmetran/pyCFM/"
+Discussions = "https://github.com/michelmetran/pyCFM/discussions"
