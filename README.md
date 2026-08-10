@@ -1,10 +1,15 @@
 # Tribunal de Justiça de São Paulo (TJSP)
 
-[GitHub](https://github.com/michelmetran/sp_tjsp_divadmin) | [PyPI](https://pypi.org/project/sp-tjsp-divadmin)
+[![Repo](https://img.shields.io/badge/GitHub-repo-blue?logo=github&logoColor=f5f5f5)](https://github.com/michelmetran/tjsp_unidades)
+[![PyPI - Version](https://img.shields.io/pypi/v/tjsp_unidades?logo=pypi&label=PyPI&color=blue)](https://pypi.org/project/tjsp_unidades)<br>
+[![Publish Python to PyPI](https://github.com/michelmetran/tjsp_unidades/actions/workflows/publish-to-pypi-uv.yml/badge.svg)](https://github.com/michelmetran/tjsp_unidades/actions/workflows/publish-to-pypi-uv.yml)
+[![Static Badge](https://img.shields.io/badge/MkDocs-Docs-Green)](https://tjsp-unidades.readthedocs.io/)
 
 <br>
 
-Por meio do site das [Regiões Administrativas Judiciárias](https://www.tjsp.jus.br/QuemSomos/QuemSomos/RegioesAdministrativasJudiciarias), do [TJSP](https://portal.tjsp.jus.br) foi possível obter a lista de:
+Na atuação do MPSP faz-se obter informações atualizadas do TJSP constantemente. Devido à inexistência de comunicação direta entre as duas principais instituições do pode judiciário do Estado de São Paulo, foi necessário recorrer à _webscrapping_ para raspar informações básicas do TJSP.
+
+Dentre as informações mais básicas, está a divisão adminstrativa do definida pelo TJSP. Por meio do _site_ das [Regiões Administrativas Judiciárias](https://www.tjsp.jus.br/QuemSomos/QuemSomos/RegioesAdministrativasJudiciarias), do [TJSP](https://portal.tjsp.jus.br) faz-se possível obter dados de:
 
 - Comarcas
 - Circunscrições Judiciárias (CJs)
@@ -12,7 +17,7 @@ Por meio do site das [Regiões Administrativas Judiciárias](https://www.tjsp.ju
 
 <br>
 
-O objetivo do presente repositório é manter rotina de atualização dessas informações, bem como disponibilizá-las por meio de pacotes [PyPI](https://pypi.org/project/sp-tjsp-divadmin).
+O objetivo do presente repositório é manter **rotinas e códigos para obtenção de dados atualizados do [TJSP](https://portal.tjsp.jus.br).** Além disso, o pacote disponibiliza um conjunto de dados atualizados até determinada data.
 
 > Dados Atualizados em 23.01.2025
 
