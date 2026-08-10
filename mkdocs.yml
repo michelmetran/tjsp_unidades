@@ -19,7 +19,7 @@ nav:
   - Como Instalar?: pages/como-instalar.md
   - Como Usar?:
       - RAJs, CJs e Comarcas: scripts/01_get_comarcas.ipynb
-      - Listas: scripts/listas.ipynb
+      - Comarca por Município: scripts/02_get_municipios.ipynb
   #     - Navegador/Driver: scripts/driver.ipynb
   #     - Login: scripts/login.ipynb
   #     - Dados Cadastrais: scripts/cadastro.ipynb
