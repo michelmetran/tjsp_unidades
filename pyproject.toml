@@ -23,4 +23,4 @@ docs = [
 ]
 
 [tool.uv.build-backend]
-source-include = ["tjsp_unidades/data/**"]
+source-include = ["data/**"]
