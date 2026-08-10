@@ -15,7 +15,9 @@ site_dir: "site" # Default site
 # NavBar
 # Opcional
 nav:
-  - Home: index.md
+  - Home:
+      - Home: index.md
+      - Concepção: pages/concepção.md
   - Como Instalar?: pages/como-instalar.md
   - Como Usar?:
       - RAJs, CJs e Comarcas: scripts/01_get_comarcas.ipynb

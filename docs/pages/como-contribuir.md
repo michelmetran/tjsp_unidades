@@ -1,4 +1,4 @@
-## Dependências
+# Dependências
 
 Tratando-se de um pacote com as dependência gerenciadas pelo [uv](https://docs.astral.sh/uv/), para criar o ambiente de desenvolvimento basta dar o comando abaixo.
 
