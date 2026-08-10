@@ -1,43 +1,58 @@
 """
-_summary_
-
-:raises Exception: _description_
-:return: _description_
-:rtype: _type_
+Módulo de consulta de APIs expostas encontradas no site do TJSP
 """
 
 import concurrent.futures
+import logging
+import threading
+from typing import List, Optional
 
 import open_geodata as geo
 import pandas as pd
 import requests
 from requests_ip_rotator import ApiGateway
 
+logger = logging.getLogger(__name__)
+
+
+# Variável de thread local
+_thread_local = threading.local()
+
+
+def get_session() -> requests.Session:
+    if not hasattr(_thread_local, "session"):
+        _thread_local.session = requests.Session()
+        # Adicione retentativas automáticas e headers se necessário
+    return _thread_local.session
+
 
 class ListarMunicipios:
     def __init__(self) -> None:
+        """
+        *Endpoint* para `ListarMunicipios` do TJSP.
+        """
         pass
 
-    def get_lista_municipios_tjsp(self, municipio) -> pd.DataFrame:
+    def get_lista_municipios_tjsp(self, termo: str) -> pd.DataFrame:
         """
         Pesquisa de municípios a partir de alguns caracteres.
         A função sempre retorna 10 itens.
-        A cada caractere, o número de registros afunila!
+        A cada caractere, o número de registros "afunila" os resultados.
 
         Exemplo de uso:
-        df = get_lista_municipios_tjsp('Santos')
+        df = get_lista_municipios_tjsp(termo='Sant')
 
-        :param municipio: _description_
-        :type municipio: _type_
+        :param termo: Termo para pesquisa. Deve ser o trecho do nome de um município.
         :raises Exception: _description_
         """
-        if len(municipio) < 3:
+        if len(termo) < 3:
             raise Exception("A pesquisa de município deve ter mais de 3 caracteres")
 
-        #
-        r = requests.post(
+        # ddd
+        session = get_session()
+        r = session.post(
             "https://www.tjsp.jus.br/AutoComplete/ListarMunicipios",
-            json={"texto": municipio},
+            json={"texto": termo},
         )
         if r.json() == "listaVazia":
             return pd.DataFrame()
@@ -65,12 +80,21 @@ class ListarMunicipios:
 
     @property
     def n_caracteres_mun_max(self) -> int:
+        """
+        Retorna o número de caracteres máximo de um município
+
+        :return: Número de caracteres máximo
+        """
         n_caracteres_mun_max = max([len(x) for x in self.lista_municipios])
         return n_caracteres_mun_max
 
     @property
     def list_termos(self):
-        # list_dfs = []
+        """
+        Cria lista de termos a serem pesquisados
+
+        :return: Lista de termos
+        """
         list_termos = []
         for i in range(self.n_caracteres_mun_max)[3:]:
             lista_municipios_temp = list(
@@ -79,21 +103,54 @@ class ListarMunicipios:
             for search_text in lista_municipios_temp:
                 list_termos.append(search_text)
 
-        list_termos = list(set(list_termos))
+        list_termos = list(filter(None, set(list_termos)))
         print(f"São {len(list_termos)} termos para pesquisa")
         return list_termos
 
-    def request(self):
-        MAX_THREADS = 5
+    def request(self, max_workers=5):
+        """
+        Faz a requisição para a API de todos os termos contidos na lista de termos
+        """
 
-        with concurrent.futures.ThreadPoolExecutor(max_workers=MAX_THREADS) as executor:
-            temp = executor.map(self.get_lista_municipios_tjsp, self.list_termos)
-            df_tjsp = pd.concat(list(temp), ignore_index=True)
+        # MAX_THREADS = 5
+        results: List[pd.DataFrame] = []
+        with concurrent.futures.ThreadPoolExecutor(max_workers=max_workers) as executor:
+            future_to_term = {
+                executor.submit(self.get_lista_municipios_tjsp, term): term
+                for term in self.list_termos
+            }
+
+            # 3. Processa conforme completam (as_completed) para melhor tratamento de erros
+            for future in concurrent.futures.as_completed(future_to_term):
+                term = future_to_term[future]
+                try:
+                    res = future.result()
+                    # Valida se o retorno é um DataFrame válido e não-vazio
+                    if isinstance(res, pd.DataFrame) and not res.empty:
+                        results.append(res)
+
+                except Exception as exc:
+                    logger.error(f"Erro ao processar o termo '{term}': {exc}")
+
+        # 4. Concatena apenas DataFrames válidos
+        if results:
+            self.df_tjsp = pd.concat(results, ignore_index=True)
+
+            #
+            self._transform_municipios_tjsp()
+
+        else:
+            self.df_tjsp = pd.DataFrame()
+
+        return self.df_tjsp
+
+        # temp = executor.map(self.get_lista_municipios_tjsp, self.list_termos)
+        # df_tjsp = pd.concat(list(temp), ignore_index=True)
 
         # Resultados
         # df_tjsp.info()
         # df_tjsp.head()
-        self.df_tjsp = df_tjsp
+        # self.df_tjsp = df_tjsp
 
     def request_aws(self, access_key_id, access_key_secret) -> pd.DataFrame:
         # Cria Gateway
@@ -108,70 +165,62 @@ class ListarMunicipios:
         gateway.pool_maxsize = 5
         gateway.start()
 
-        list_dfs = []
-
         try:
             # Cria Session
-            session = requests.Session()
-            session.mount(prefix="https://www.tjsp.jus.br", adapter=gateway)
+            with requests.Session() as session:
+                session.mount(prefix="https://www.tjsp.jus.br", adapter=gateway)
+                list_dfs = []
+                for termo in self.list_termos:
+                    df_temp = self.get_lista_municipios_tjsp(termo=termo)
+                    list_dfs.append(df_temp)
 
-            # Em 23.01.2025 tentei o uso do API
-            for term in self.list_termos:
-                df_temp = self.get_lista_municipios_tjsp(municipio=term)
-                list_dfs.append(df_temp)
+                self.df_tjsp = pd.concat(objs=list_dfs, ignore_index=True)
 
-            # Crio a tabela
-            df = pd.concat(
-                objs=list_dfs,
-                ignore_index=True,
-            )
-
-        except Exception as e:
-            print(e)
+        except requests.RequestException as e:
+            # Captura específica para erros de HTTP/Conexão
+            raise RuntimeError(f"Erro de conexão com o TJSP: {e}") from e
 
         finally:
             # Encerra o worker
             gateway.shutdown()
 
-        self.df_tjsp = df
-
-    @property
-    def municipios_tjsp(self) -> pd.DataFrame:
+    def _transform_municipios_tjsp(self) -> pd.DataFrame:
+        """
+        Faz ajustes na tabela
+        """
 
         if not isinstance(self.df_tjsp, pd.DataFrame):
             raise Exception("Precisa ser uma tabela")
 
-        #
-        df = self.df_tjsp
-
-        # Ajusta a tabela
-        df = df.drop_duplicates()
+        # Remove Duplicados
+        self.df_tjsp = self.df_tjsp.drop_duplicates()
 
         # Ordena a tabela
-        df = df.iloc[df["municipio_tjsp"].str.normalize("NFKD").argsort()]
+        self.df_tjsp = self.df_tjsp.iloc[
+            self.df_tjsp["municipio_tjsp"].str.normalize("NFKD").argsort()
+        ]
 
         # Reseta Índice
-        df = df.reset_index(drop=True)
+        self.df_tjsp = self.df_tjsp.reset_index(drop=True)
 
         # Aplica strip em tudo
-        df = df.map(lambda x: x.strip() if isinstance(x, str) else x)
+        self.df_tjsp = self.df_tjsp.map(
+            lambda x: x.strip() if isinstance(x, str) else x
+        )
 
-        if len(df) != 645:
+        if len(self.df_tjsp) != 645:
             raise Exception("Falta Município!")
 
-
-
         # Resultados
-        return df
+        return self.df_tjsp
 
 
 class MunicipiosTJSP:
-    def __init__(self, df_municipios) -> None:
+    def __init__(self, df_municipios: pd.DataFrame) -> None:
         """
         Classe para tratar a tabela
 
         :param df_municipios: _description_
-        :type df_municipios: _type_
         """
         self.df_municipios = df_municipios
 
@@ -236,7 +285,7 @@ class MunicipiosTJSP:
         self.df_municipios = df_municipios
 
     @property
-    def municipios(self):
+    def municipios(self) -> pd.DataFrame:
         """
         Função para criar a tabela, tratando os dados
 
@@ -262,8 +311,8 @@ class MunicipiosTJSP:
                 "id_municipio_ibge",
                 "id_municipio_tjsp",
                 # "municipio_nome",
-                "municipio_tjsp_corrigido",
                 "municipio_tjsp",
+                "municipio_tjsp_corrigido",
             ]
         ]
         return df

@@ -23,8 +23,8 @@ class ListarUnidades:
         """
         Pega a lista de unidades (Fóruns) de um determinado Município,
         a partir do Código do Município do TJSP
+
         :param cod_municipio: _description_
-        :type cod_municipio: _type_
         :return: _description_
         """
         # Requests
@@ -60,6 +60,7 @@ class ListarUnidades:
 
             if mun.strip() == com.strip():
                 comarca_sede = 1
+                
             else:
                 comarca_sede = 0
 
@@ -95,11 +96,11 @@ class ListarUnidades:
         list_id_tjsp = list(df_mun["id_municipio_tjsp"])
 
         if self.df_com is None:
-
             MAX_THREADS = 5
             with concurrent.futures.ThreadPoolExecutor(
                 max_workers=MAX_THREADS
             ) as executor:
+                # dddd
                 temp = executor.map(self.get_lista_unidades_tjsp, list_id_tjsp)
                 df_com = pd.concat(objs=list(temp), ignore_index=True)
 

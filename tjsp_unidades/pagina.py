@@ -1,5 +1,5 @@
 """
-_summary_
+Módulo que obtem e trata a informação contida na página "Quem Somos" do TJSP.
 """
 
 import re
@@ -12,6 +12,10 @@ from .small_functions import keep_numbers
 
 
 class QuemSomos:
+    """
+    Classe que representa a página [Quem Somos](https://www.tjsp.jus.br/QuemSomos/QuemSomos/RegioesAdministrativasJudiciarias) do TJSP
+    """
+
     def __init__(self) -> None:
         self.url = "https://www.tjsp.jus.br/QuemSomos/QuemSomos/RegioesAdministrativasJudiciarias"
 
@@ -20,7 +24,7 @@ class QuemSomos:
 
     def _request(self):
         """
-        _summary_
+        Obtem os dados brutos do site
         """
 
         content = urllib.request.urlopen(url=self.url).read()
@@ -74,10 +78,9 @@ class QuemSomos:
     @property
     def rajs(self) -> pd.DataFrame:
         """
-        _summary_
+        Tabela contendo informações das Regiões Administrativas Judiciárias (RAJs) do TJSP.
 
-        :return: _description_
-        :rtype: pd.DataFrame
+        :return: tabela contendo informações das RAJs
         """
         # Cria Tabela
         df_raj = pd.DataFrame(self.list_dfs_rajs)
@@ -109,8 +112,16 @@ class QuemSomos:
 
     @property
     def cjs(self) -> pd.DataFrame:
+        """
+        Tabela contendo informações das Circuncrições Judiciárias (CJs) do TJSP.
+
+        :return: tabela contendo informações das CJs
+        """
         # Monta Tabela
-        df_cj = pd.concat(objs=self.list_dfs_cjs, ignore_index=True)
+        df_cj = pd.concat(
+            objs=self.list_dfs_cjs,
+            ignore_index=True,
+        )
 
         # ddd
         df_cj[["comarca", "cj_sigla"]] = df_cj["comarca_cirscunscricao"].str.rsplit(
@@ -150,10 +161,7 @@ class QuemSomos:
             ]
         ]
 
-        #
         df_cj = df_cj.drop_duplicates()
-
-        #
         df_cj = df_cj.sort_values(by="id_cj")
         df_cj = df_cj.reset_index(drop=True)
         df_cj = df_cj.drop_duplicates()
@@ -164,13 +172,15 @@ class QuemSomos:
     @property
     def comarcas(self) -> pd.DataFrame:
         """
-        _summary_
+        Tabela contendo informações das Comarcas e Vinculação com CJs do TJSP.
 
-        :return: _description_
-        :rtype: pd.DataFrame
+        :return: tabela contendo informações das Comarcas
         """
         # Monta Tabela
-        df = pd.concat(objs=self.list_dfs_cjs, ignore_index=True)
+        df = pd.concat(
+            objs=self.list_dfs_cjs,
+            ignore_index=True,
+        )
 
         df[["comarca", "cj_sigla"]] = df["comarca_cirscunscricao"].str.rsplit(
             "-", n=1, expand=True

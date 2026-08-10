@@ -81,14 +81,6 @@ def adjust_columns(df: pd.DataFrame, column_ajust: str) -> pd.DataFrame:
     :param df: tabela bruta
     :return: tabela com coluna a mais
     """
-    #
-    dd_fix = {
-        # Errado / Certo
-        "rio grande de serra": "rio grande da serra",
-        "santa rosa de viterbo": "santa rosa do viterbo",
-        "santana do parnaiba": "santana de parnaiba",
-        "sao luis do paraitinga": "sao luiz do paraitinga",
-    }
 
     # Coluna para ajustar
     col_temp = f"{column_ajust}_temp"
@@ -101,6 +93,16 @@ def adjust_columns(df: pd.DataFrame, column_ajust: str) -> pd.DataFrame:
     df[col_temp] = df[col_temp].str.replace("’", "")
     df[col_temp] = df[col_temp].str.replace("´", "")
     df[col_temp] = df[col_temp].str.replace("'", "")
+
+    # Dicionário
+    dd_fix = {
+        # Errado / Certo
+        "rio grande de serra": "rio grande da serra",
+        "santa rosa de viterbo": "santa rosa do viterbo",
+        "santana do parnaiba": "santana de parnaiba",
+        "sao luis do paraitinga": "sao luiz do paraitinga",
+    }
+
     df[col_temp] = df[col_temp].rename(dd_fix, axis="rows")
     df = df.replace({col_temp: dd_fix})
     return df
