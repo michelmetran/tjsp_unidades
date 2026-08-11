@@ -4,4 +4,4 @@ Na minha atuação na área ambiental eu trabalhei muito com raspagem de dados, 
 
 No início de 2023 migrei pro _Centro de Tecnologia da Informação e Comunicação_ (CTIC), quando pude compreender a complexidade da TI em ambiente institucional.
 
-Ao final de 2024 migrei pra _Subprocuradoria-Geral de Justiça de Estratégia e Inovação_. Foi nessa época que escrevi o pacote [pyCFM](https://github.com/michelmetran/pyCFM).
+Ao final de 2024 migrei pra _Subprocuradoria-Geral de Justiça de Estratégia e Inovação_. Foi nessa época que escrevi o pacote [tjsp_unidades](https://pypi.org/project/tjsp_unidades/).
