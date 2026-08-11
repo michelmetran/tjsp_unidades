@@ -18,7 +18,7 @@ logger = logging.getLogger(__name__)
 class Imovel:
     def __init__(self, municipio: Municipio):
         self.municipio = municipio
-        self._lista_imovel = list(municipio.df_detalhes["imovel"])
+        self._lista_imovel = list(self.municipio.df_detalhes["imovel"])
 
     def search(self, termo: str) -> pd.DataFrame:
         """

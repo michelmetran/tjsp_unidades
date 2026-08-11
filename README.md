@@ -28,3 +28,4 @@ O objetivo do presente repositório é manter **rotinas e códigos para obtenç�
 1. Obter Entrâncias das Comarcas?? Tabular leis... [Lei 1](https://www.al.sp.gov.br/norma/59545), [Lei 2](https://www.al.sp.gov.br/repositorio/legislacao/lei.complementar/2005/lei.complementar-980-21.12.2005.html) etc.
 2. Usar pasta temporária
 3. Trabalhar nos setores
+4. Fazer cache

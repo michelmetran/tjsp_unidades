@@ -6,6 +6,7 @@ import concurrent.futures
 import logging
 
 import pandas as pd
+from bs4 import BeautifulSoup
 
 from .api_municipios import Municipio
 from .sss import get_default_workers, get_session
@@ -14,10 +15,9 @@ logger = logging.getLogger(__name__)
 
 
 class Setores:
-    def __init__(self, listar_unidades: Municipio):
-        self.listar_unidades = listar_unidades
-
-        self.lista_unidade = list(self.listar_unidades.df_detalhes["unidades"])
+    def __init__(self, municipio: Municipio):
+        self.municipio = municipio
+        self._lista_imovel = list(self.municipio.df_detalhes["imovel"])
 
     def search(self, termo: str) -> pd.DataFrame:
         """
@@ -48,6 +48,7 @@ class Setores:
                 },
                 axis="columns",
             )
+            df = df.sort_values(by="id_setor", inplace=False)
             return df
 
     @property
@@ -58,7 +59,7 @@ class Setores:
         :return: Número de caracteres máximo
         """
         # Número de Caracteres
-        return max([len(x) for x in self.lista_unidade])
+        return max([len(x) for x in self._lista_imovel])
 
     @property
     def _list_termos(self):
@@ -69,9 +70,11 @@ class Setores:
         """
         # Cria Lista de Termos a sere pesquisados
         list_termos = []
-        for i in range(self._n_caracteres_mun_max)[3:]:
+        numero_minimo_caracteres = 3
+
+        for i in range(self._n_caracteres_mun_max)[numero_minimo_caracteres:]:
             lista_temp = list(
-                set([mun[:i] for mun in self.lista_unidade if len(mun) >= i])
+                set([mun[:i] for mun in self._lista_imovel if len(mun) >= i])
             )
             for search_text in lista_temp:
                 list_termos.append(search_text)
@@ -146,6 +149,7 @@ class Setores:
         self.df_search = self.df_search.iloc[
             self.df_search["setor_tjsp"].str.normalize("NFKD").argsort()
         ]
+        self.df_search = self.df_search.sort_values(by="id_setor", inplace=False)
 
         # Reseta Índice
         self.df_search = self.df_search.reset_index(drop=True)
@@ -169,19 +173,9 @@ class Setores:
             timeout=60,
         )
 
-        # BS4
-        # soup = BeautifulSoup(r.text, "html.parser")
-        # text_comarca = soup.find_all("h4")
-        # if text_comarca == []:
-        #     raise RuntimeError("Erro")
-        return r
+        return r, self._trata_response(response=r)
 
-
-class SetoresPorImovel:
-    def __init__(self) -> None:
-        pass
-
-    def get_setores(self, id_imovel: int):
+    def por_imovel(self, id_imovel: int):
 
         # Create Session
         session = get_session()
@@ -192,9 +186,22 @@ class SetoresPorImovel:
             timeout=60,
         )
 
-        # BS4
-        # soup = BeautifulSoup(r.text, "html.parser")
-        # text_comarca = soup.find_all("h4")
-        # if text_comarca == []:
-        #     raise RuntimeError("Erro")
         return r
+
+    def _trata_response(self, response):
+        # BS4
+        soup = BeautifulSoup(response.text, "html.parser")
+
+        # Montando o dicionário completo
+        resultado = {
+            "setor": soup.find("h2", class_="setortitle").get_text(strip=True),
+            "codigo_imovel": soup.find("input", id="hdCodigoImovel")["value"],
+            "detalhes": {
+                dl.find("dt").get_text(strip=True): dl.find("dd")
+                .get_text(strip=True)
+                .rstrip(";")
+                .strip()
+                for dl in soup.find_all("dl", class_="dl-lista-telefonica")
+            },
+        }
+        return resultado
