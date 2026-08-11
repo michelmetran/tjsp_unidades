@@ -5,6 +5,11 @@ Tratando-se de um pacote com as dependência gerenciadas pelo [uv](https://docs.
 ```shell
 # Instala os pacotes definidos no pyproject.toml
 uv sync --group docs --group dev
+uv sync --group docs
+
+# Ativa environment
+.venv\Scripts\activate # Windows
+source .venv/bin/activate # Linux
 ```
 
 <br>
@@ -19,5 +24,6 @@ Para testar localmente, basta usar:
 
 ```shell
 # Serve Localmente
-mkdocs serve
+mkdocs serve --livereload
+python -m mkdocs serve --livereload
 ```

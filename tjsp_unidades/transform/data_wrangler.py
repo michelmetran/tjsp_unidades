@@ -2,15 +2,15 @@
 _summary_
 """
 
-from ..extract import ListarMunicipios, ListarUnidades, QuemSomos
+from ..extract import DetalheMunicipio, Municipio, QuemSomos
 
 
 class Transform:
     def __init__(
         self,
         quem_somos: QuemSomos,
-        listar_municipios: ListarMunicipios,
-        listar_unidades: ListarUnidades,
+        listar_municipios: Municipio,
+        listar_unidades: DetalheMunicipio,
     ) -> None:
         pass
 

@@ -2,7 +2,7 @@
 site_name: TJSP
 site_author: Michel Metran
 site_description: Obtem dados de médicos acessando informações do Conselho Federal de Medicina usando python!
-site_url: https://tjsp.readthedocs.io/
+site_url: https://tjsp-unidades.readthedocs.io/
 copyright: |
   &copy; 2026 <a href="https://github.com/michelmetran"  target="_blank" rel="noopener">Michel Metran</a>
 
@@ -20,14 +20,18 @@ nav:
       - Concepção: pages/concepção.md
       - Como Contribuir?: pages/como-contribuir.md
       - Me, Myself and I: pages/autor.md
+
   - Como Instalar?: pages/como-instalar.md
   - Como Usar?:
-      Obter Dados:
-        - RAJs, CJs e Comarcas: scripts/10_get_data_quem_somos.ipynb
-        - Município e IDs TJSP: scripts/11_get_data_listar_municipios.ipynb
-        - Navegador/Driver: scripts/12_get_data_listar_unidades.ipynb
-      Tratar Dados:
-        - ETL: scripts/13_transform.ipynb
+      - Obter Dados:
+          - RAJs: scripts/10_get_data_quem_somos_rajs.ipynb
+          - CJs: scripts/11_get_data_quem_somos_cjs.ipynb
+          - Comarcas: scripts/12_get_data_quem_somos_comarcas.ipynb
+          - Município: scripts/13_get_data_listar_municipios.ipynb
+          - Imóveis: scripts/14_get_data_listar_imovel.ipynb
+          - Setores: scripts/15_get_data_listar_imoveis.ipynb
+      - Tratar Dados:
+          - ETL: scripts/20_transform.ipynb
   #     - Dados Cadastrais: scripts/cadastro.ipynb
   #     - Gerenciamento de Perfil: scripts/gerenciamento_perfil.ipynb
   #     - Consulta de Processos: scripts/consulta_processo.ipynb
@@ -127,7 +131,7 @@ plugins:
       #cards_layout: default
       cards_layout_options:
         background_color: "#ff1493"
-        background_image: docs/assets/bug-paginacao.png
+        # background_image: docs/assets/bug-paginacao.png
         color: "#ffffff"
         #font_family: Ubuntu
         # logo: docs/assets/logo.png

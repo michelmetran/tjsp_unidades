@@ -4,21 +4,23 @@ Módulo de consulta de APIs expostas encontradas no site do TJSP
 
 import concurrent.futures
 import logging
+import re
 
 import pandas as pd
+from bs4 import BeautifulSoup
 
-from .api_municipios import ListarUnidades
+from .api_municipios import Municipio
 from .sss import get_default_workers, get_session
 
 logger = logging.getLogger(__name__)
 
 
-class ListarImoveis:
-    def __init__(self, listar_unidades: ListarUnidades):
-        self.listar_unidades = listar_unidades
-        self.lista_unidade = list(self.listar_unidades.df_unidades["imovel"])
+class Imovel:
+    def __init__(self, municipio: Municipio):
+        self.municipio = municipio
+        self.lista_imovel = list(municipio.df_detalhes["imovel"])
 
-    def get_imovel(self, termo: str) -> pd.DataFrame:
+    def search(self, termo: str) -> pd.DataFrame:
         """
         Pega a lista de unidades (Fóruns) de um determinado Município,
         a partir do Código do Município do TJSP
@@ -47,32 +49,41 @@ class ListarImoveis:
                 },
                 axis="columns",
             )
+            df = df.sort_values(by="id_imovel", inplace=False)
             return df
 
     @property
-    def n_caracteres_mun_max(self) -> int:
+    def _n_caracteres_mun_max(self) -> int:
         """
         Retorna o número de caracteres máximo de um município
 
         :return: Número de caracteres máximo
         """
         # Número de Caracteres
-        return max([len(x) for x in self.lista_unidade])
+        return max([len(x) for x in self.lista_imovel])
 
     @property
-    def list_termos(self):
+    def _list_termos(self):
         """
         Cria lista de termos a serem pesquisados
 
         :return: Lista de termos
         """
-        # Cria Lista de Termos a sere pesquisados
+        # Cria Lista de Termos a serem pesquisados
         list_termos = []
         numero_minimo_caracteres = 4
-        for i in range(self.n_caracteres_mun_max)[numero_minimo_caracteres:]:
-            lista_temp = list(
-                set([mun[:i] for mun in self.lista_unidade if len(mun) >= i])
-            )
+
+        # Flattens a lista de "frases" em uma única lista de palavras
+        list_imovel = [
+            palavra.lower()
+            for imovel in self.lista_imovel
+            for palavra in imovel.split()
+            if len(palavra) > 4
+        ]
+        list_imovel = list(set(list_imovel))
+
+        for i in range(self._n_caracteres_mun_max)[numero_minimo_caracteres:]:
+            lista_temp = list(set([mun[:i] for mun in list_imovel if len(mun) >= i]))
             for search_text in lista_temp:
                 list_termos.append(search_text)
 
@@ -85,7 +96,7 @@ class ListarImoveis:
         print(f"São {len(list_termos)} termos para pesquisa")
         return list_termos
 
-    def request(self, max_workers=None) -> pd.DataFrame:
+    def search_batch(self, max_workers=None) -> pd.DataFrame:
         """
         Faz a requisição para a API de todos os termos contidos na lista de termos
         """
@@ -98,8 +109,7 @@ class ListarImoveis:
         results = []
         with concurrent.futures.ThreadPoolExecutor(max_workers=max_workers) as executor:
             future_to_term = {
-                executor.submit(self.get_imovel, term): term
-                for term in self.list_termos
+                executor.submit(self.search, term): term for term in self._list_termos
             }
 
             # 3. Processa conforme completam (as_completed) para melhor tratamento de erros
@@ -116,7 +126,7 @@ class ListarImoveis:
 
         # 4. Concatena apenas DataFrames válidos
         if results:
-            self.df_imovel = pd.concat(
+            self.df_search = pd.concat(
                 objs=results,
                 ignore_index=True,
             )
@@ -125,42 +135,39 @@ class ListarImoveis:
             self._transform_municipios_tjsp()
 
         else:
-            self.df_imovel = pd.DataFrame()
+            self.df_search = pd.DataFrame()
 
-        return self.df_imovel
+        return self.df_search
 
     def _transform_municipios_tjsp(self) -> pd.DataFrame:
         """
         Faz ajustes na tabela
         """
 
-        if not isinstance(self.df_imovel, pd.DataFrame):
+        if not isinstance(self.df_search, pd.DataFrame):
             raise TypeError("Precisa ser uma tabela")
 
         # Remove Duplicados
-        self.df_imovel = self.df_imovel.drop_duplicates()
+        self.df_search = self.df_search.drop_duplicates()
+
         # Ordena a tabela
-        self.df_imovel = self.df_imovel.iloc[
-            self.df_imovel["imovel_tjsp"].str.normalize("NFKD").argsort()
+        self.df_search = self.df_search.iloc[
+            self.df_search["imovel_tjsp"].str.normalize("NFKD").argsort()
         ]
+        self.df_search = self.df_search.sort_values(by="id_imovel", inplace=False)
 
         # Reseta Índice
-        self.df_imovel = self.df_imovel.reset_index(drop=True)
+        self.df_search = self.df_search.reset_index(drop=True)
 
         # Aplica strip em tudo
-        self.df_imovel = self.df_imovel.map(
+        self.df_search = self.df_search.map(
             lambda x: x.strip() if isinstance(x, str) else x
         )
 
         # Resultados
-        return self.df_imovel
+        return self.df_search
 
-
-class ImovelBusca:
-    def __init__(self) -> None:
-        pass
-
-    def get(self, id_imovel: int):
+    def detalhe(self, id_imovel: int):
 
         # Create Session
         session = get_session()
@@ -171,19 +178,9 @@ class ImovelBusca:
             timeout=60,
         )
 
-        # BS4
-        # soup = BeautifulSoup(r.text, "html.parser")
-        # text_comarca = soup.find_all("h4")
-        # if text_comarca == []:
-        #     raise RuntimeError("Erro")
-        return r
+        return r, self._tratar_response(response=r, id_imovel=id_imovel)
 
-
-class ObterImovel:
-    def __init__(self) -> None:
-        pass
-
-    def get(self, id_imovel: int):
+    def obter_imovel(self, id_imovel: int):
 
         # Create Session
         session = get_session()
@@ -193,10 +190,109 @@ class ObterImovel:
             json={"codigo": id_imovel},
             timeout=60,
         )
+        return r, self._tratar_response(response=r, id_imovel=id_imovel)
+
+    def _tratar_response(self, response, id_imovel):
 
         # BS4
-        # soup = BeautifulSoup(r.text, "html.parser")
-        # text_comarca = soup.find_all("h4")
-        # if text_comarca == []:
-        #     raise RuntimeError("Erro")
-        return r
+        soup = BeautifulSoup(response.text, "html.parser")
+
+        try:
+            unidade = soup.find(name="h3", attrs={"id": "imovelNome"}).text.strip()
+        except:
+            unidade = "Sem nome"
+
+        endereco = (
+            soup.find("dt", string=re.compile(".*Endereço.*", flags=re.DOTALL))
+            .parent.find(name="dd")
+            .find(name="span")
+            .text.strip()
+        )
+
+        telefone = (
+            soup.find("dt", string=re.compile(".*Telefone.*", flags=re.DOTALL))
+            .parent.find(name="dd")
+            .find(name="span")
+            .text.strip()
+        )
+
+        fax = (
+            soup.find("dt", string=re.compile(".*Fax.*", flags=re.DOTALL))
+            .parent.find(name="dd")
+            .find(name="span")
+            .text.strip()
+        )
+
+        email: str = (
+            soup.find("dt", string=re.compile(".*E-mail.*", flags=re.DOTALL))
+            .parent.find(name="dd")
+            .find(name="span")
+            .text.strip()
+        )
+
+        cj: str = (
+            soup.find(
+                "dt",
+                string=re.compile(".*Circunscrição Judiciária.*", flags=re.DOTALL),
+            )
+            .parent.find(name="dd")
+            .find(name="span")
+            .text.strip()
+        )
+
+        num_varas_instaladas = (
+            soup.find(
+                "dt",
+                string=re.compile(".*Número de Varas Instaladas.*", flags=re.DOTALL),
+            )
+            .parent.find(name="dd")
+            .find(name="span")
+            .text.strip()
+        )
+
+        entrancia = (
+            soup.find("dt", string=re.compile(".*Entrância.*", flags=re.DOTALL))
+            .parent.find(name="dd")
+            .find(name="span")
+            .text.strip()
+        )
+
+        # re.compile('.*Comarca.*', flags=re.DOTALL)
+        comarca = (
+            soup.find("dt", string=re.compile(".*Comarca.*", flags=re.DOTALL))
+            .parent.find(name="dd")
+            .find(name="span")
+            .text.strip()
+        )
+
+        dist_capital = (
+            soup.find(
+                "dt", string=re.compile(".*Distância da Capital.*", flags=re.DOTALL)
+            )
+            .parent.find(name="dd")
+            .find(name="span")
+            .text.strip()
+        )
+
+        tensao_eletrica = (
+            soup.find("dt", string=re.compile(".*Tensão Elétrica.*", flags=re.DOTALL))
+            .parent.find(name="dd")
+            .find(name="span")
+            .text.strip()
+        )
+
+        tj_dict = {
+            "id_imovel": id_imovel,
+            "unidade": unidade,
+            "endereco": endereco,
+            "telefone": telefone,
+            "fax": fax,
+            "email": email,
+            "cj": cj,
+            "num_varas_instaladas": num_varas_instaladas,
+            "entrancia": entrancia,
+            "comarca": comarca,
+            "dist_capital": dist_capital,
+            "tensao_eletrica": tensao_eletrica,
+        }
+        return tj_dict

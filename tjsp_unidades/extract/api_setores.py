@@ -6,21 +6,20 @@ import concurrent.futures
 import logging
 
 import pandas as pd
-from bs4 import BeautifulSoup
 
-from .api_municipios import ListarUnidades
+from .api_municipios import Municipio
 from .sss import get_default_workers, get_session
 
 logger = logging.getLogger(__name__)
 
 
-class ListarSetores:
-    def __init__(self, listar_unidades: ListarUnidades):
+class Setores:
+    def __init__(self, listar_unidades: Municipio):
         self.listar_unidades = listar_unidades
 
-        self.lista_unidade = list(self.listar_unidades.df_unidades["unidades"])
+        self.lista_unidade = list(self.listar_unidades.df_detalhes["unidades"])
 
-    def get_setores(self, termo: str) -> pd.DataFrame:
+    def search(self, termo: str) -> pd.DataFrame:
         """
         Pega a lista de unidades (Fóruns) de um determinado Município,
         a partir do Código do Município do TJSP
@@ -52,7 +51,7 @@ class ListarSetores:
             return df
 
     @property
-    def n_caracteres_mun_max(self) -> int:
+    def _n_caracteres_mun_max(self) -> int:
         """
         Retorna o número de caracteres máximo de um município
 
@@ -62,7 +61,7 @@ class ListarSetores:
         return max([len(x) for x in self.lista_unidade])
 
     @property
-    def list_termos(self):
+    def _list_termos(self):
         """
         Cria lista de termos a serem pesquisados
 
@@ -70,7 +69,7 @@ class ListarSetores:
         """
         # Cria Lista de Termos a sere pesquisados
         list_termos = []
-        for i in range(self.n_caracteres_mun_max)[3:]:
+        for i in range(self._n_caracteres_mun_max)[3:]:
             lista_temp = list(
                 set([mun[:i] for mun in self.lista_unidade if len(mun) >= i])
             )
@@ -86,7 +85,7 @@ class ListarSetores:
         print(f"São {len(list_termos)} termos para pesquisa")
         return list_termos
 
-    def request(self, max_workers=None) -> pd.DataFrame:
+    def search_batch(self, max_workers=None) -> pd.DataFrame:
         """
         Faz a requisição para a API de todos os termos contidos na lista de termos
         """
@@ -99,8 +98,7 @@ class ListarSetores:
         results = []
         with concurrent.futures.ThreadPoolExecutor(max_workers=max_workers) as executor:
             future_to_term = {
-                executor.submit(self.get_setores, term): term
-                for term in self.list_termos
+                executor.submit(self.search, term): term for term in self._list_termos
             }
 
             # 3. Processa conforme completam (as_completed) para melhor tratamento de erros
@@ -117,7 +115,7 @@ class ListarSetores:
 
         # 4. Concatena apenas DataFrames válidos
         if results:
-            self.df_setores = pd.concat(
+            self.df_search = pd.concat(
                 objs=results,
                 ignore_index=True,
             )
@@ -129,42 +127,38 @@ class ListarSetores:
             # self._fix_names()
 
         else:
-            self.df_setores = pd.DataFrame()
+            self.df_search = pd.DataFrame()
 
-        return self.df_setores
+        return self.df_search
 
     def _transform_municipios_tjsp(self) -> pd.DataFrame:
         """
         Faz ajustes na tabela
         """
 
-        if not isinstance(self.df_setores, pd.DataFrame):
+        if not isinstance(self.df_search, pd.DataFrame):
             raise TypeError("Precisa ser uma tabela")
 
         # Remove Duplicados
-        self.df_setores = self.df_setores.drop_duplicates()
+        self.df_search = self.df_search.drop_duplicates()
+
         # Ordena a tabela
-        self.df_setores = self.df_setores.iloc[
-            self.df_setores["setor_tjsp"].str.normalize("NFKD").argsort()
+        self.df_search = self.df_search.iloc[
+            self.df_search["setor_tjsp"].str.normalize("NFKD").argsort()
         ]
 
         # Reseta Índice
-        self.df_setores = self.df_setores.reset_index(drop=True)
+        self.df_search = self.df_search.reset_index(drop=True)
 
         # Aplica strip em tudo
-        self.df_setores = self.df_setores.map(
+        self.df_search = self.df_search.map(
             lambda x: x.strip() if isinstance(x, str) else x
         )
 
         # Resultados
-        return self.df_setores
+        return self.df_search
 
-
-class SetoresBusca:
-    def __init__(self) -> None:
-        pass
-
-    def get_setor(self, id_setor: int):
+    def detalhe(self, id_setor: int):
 
         # Create Session
         session = get_session()

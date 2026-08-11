@@ -1,4 +1,4 @@
-from .api_imovel import ImovelBusca, ListarImoveis, ObterImovel
-from .api_municipios import ListarMunicipios, ListarUnidades
-from .api_setores import ListarSetores, SetoresBusca
+from .api_imovel import Imovel
+from .api_municipios import Municipio
+from .api_setores import Setores
 from .pagina import QuemSomos

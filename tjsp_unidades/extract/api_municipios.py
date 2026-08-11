@@ -1,5 +1,6 @@
 """
 Módulo de consulta da API "AutoComplete/ListarMunicipios" expostas encontradas no site do TJSP
+https://www.tjsp.jus.br/ListaTelefonica
 """
 
 import concurrent.futures
@@ -15,18 +16,18 @@ from .sss import get_default_workers, get_session
 logger = logging.getLogger(__name__)
 
 
-class ListarMunicipios:
+class Municipio:
     def __init__(self) -> None:
         """
         *Endpoint* para `ListarMunicipios` do TJSP.
         """
-        # ddd
+        # Obtem uma lista de nomes de municípios
         self.df_municipios_geo = geo.load_dataset(db="sp", name="tab.municipio_nome")
 
         # Cria Lista com Nomes de Municípios
-        self.lista_municipios = list(self.df_municipios_geo["municipio_nome"])
+        self._lista_municipios = list(self.df_municipios_geo["municipio_nome"])
 
-    def get_lista_municipios_tjsp(self, termo: str) -> pd.DataFrame:
+    def search(self, termo: str) -> pd.DataFrame:
         """
         Pesquisa de municípios a partir de alguns caracteres.
         A função sempre retorna 10 itens.
@@ -63,17 +64,17 @@ class ListarMunicipios:
             return df
 
     @property
-    def n_caracteres_mun_max(self) -> int:
+    def _n_caracteres_mun_max(self) -> int:
         """
         Retorna o número de caracteres máximo de um município
 
         :return: Número de caracteres máximo
         """
         # Número de Caracteres
-        return max([len(x) for x in self.lista_municipios])
+        return max([len(x) for x in self._lista_municipios])
 
     @property
-    def list_termos(self):
+    def _list_termos(self):
         """
         Cria lista de termos a serem pesquisados
 
@@ -82,9 +83,9 @@ class ListarMunicipios:
 
         # Cria Lista de Termos a sere pesquisados
         list_termos = []
-        for i in range(self.n_caracteres_mun_max)[3:]:
+        for i in range(self._n_caracteres_mun_max)[3:]:
             lista_municipios_temp = list(
-                set([mun[:i] for mun in self.lista_municipios if len(mun) >= i])
+                set([mun[:i] for mun in self._lista_municipios if len(mun) >= i])
             )
             for search_text in lista_municipios_temp:
                 list_termos.append(search_text)
@@ -98,7 +99,7 @@ class ListarMunicipios:
         print(f"São {len(list_termos)} termos para pesquisa")
         return list_termos
 
-    def request(self, max_workers=None) -> pd.DataFrame:
+    def search_batch(self, max_workers=None) -> pd.DataFrame:
         """
         Faz a requisição para a API de todos os termos contidos na lista de termos
         """
@@ -111,8 +112,7 @@ class ListarMunicipios:
         results = []
         with concurrent.futures.ThreadPoolExecutor(max_workers=max_workers) as executor:
             future_to_term = {
-                executor.submit(self.get_lista_municipios_tjsp, term): term
-                for term in self.list_termos
+                executor.submit(self.search, term): term for term in self._list_termos
             }
 
             # 3. Processa conforme completam (as_completed) para melhor tratamento de erros
@@ -129,7 +129,7 @@ class ListarMunicipios:
 
         # 4. Concatena apenas DataFrames válidos
         if results:
-            self.df_municipios_tjsp = pd.concat(results, ignore_index=True)
+            self.df_search = pd.concat(results, ignore_index=True)
 
             # Faz os ajustes na tabela
             self._transform_municipios_tjsp()
@@ -138,9 +138,106 @@ class ListarMunicipios:
             self._fix_names()
 
         else:
-            self.df_municipios_tjsp = pd.DataFrame()
+            self.df_search = pd.DataFrame()
 
-        return self.df_municipios_tjsp
+        return self.df_search
+
+    def _transform_municipios_tjsp(self) -> pd.DataFrame:
+        """
+        Faz ajustes na tabela
+        """
+
+        if not isinstance(self.df_search, pd.DataFrame):
+            raise TypeError("Precisa ser uma tabela")
+
+        # Remove Duplicados
+        self.df_search = self.df_search.drop_duplicates()
+
+        # Ordena a tabela
+        self.df_search = self.df_search.iloc[
+            self.df_search["municipio_tjsp"].str.normalize("NFKD").argsort()
+        ]
+
+        # Reseta Índice
+        self.df_search = self.df_search.reset_index(drop=True)
+
+        # Aplica strip em tudo
+        self.df_search = self.df_search.map(
+            lambda x: x.strip() if isinstance(x, str) else x
+        )
+
+        if len(self.df_search) != 645:
+            raise RuntimeError(
+                f"Está faltando município. Temos {len(self.df_search)} municipíos."
+            )
+
+        # Resultados
+        return self.df_search
+
+    def _fix_names(
+        self,
+        dict_replace={
+            # Nome Errado (TJSP): Nome Correto
+            "Estrela dOeste": "Estrela d'Oeste",
+            "Luís Antônio": "Luiz Antônio",
+            "Florínia": "Florínea",
+        },
+    ) -> pd.DataFrame:
+        """
+        Ajusto o nome dos municípios de acordo com a tabela existente no projeto [open-geodata](https://github.com/michelmetran/open-geodata).
+
+        :param dict_replace: _description_, defaults to { "Estrela dOeste": "Estrela d'Oeste", "Luís Antônio": "Luiz Antônio", "Florínia": "Florínea", }
+        :return: _description_
+        """
+        # Crio Cópia da Coluna
+        self.df_search["municipio_tjsp_corrigido"] = self.df_search["municipio_tjsp"]
+
+        # Renomeia Municípios com Dicionário
+        self.df_search["municipio_tjsp_corrigido"] = self.df_search[
+            "municipio_tjsp_corrigido"
+        ].replace(dict_replace)
+
+        # Merge
+        self.df_search = pd.merge(
+            left=self.df_municipios_geo,
+            right=self.df_search,
+            left_on="municipio_nome",
+            right_on="municipio_tjsp_corrigido",
+            how="left",
+        )
+
+        # Deleta Colunas
+        self.df_search = self.df_search.drop(
+            labels="municipio_nome",
+            axis="columns",
+            inplace=False,
+            errors="ignore",
+        )
+        # Renomeia Colunas
+        self.df_search = self.df_search.rename(
+            {"id_municipio": "id_municipio_ibge"},
+            axis="columns",
+        )
+
+        # Encontre erros
+        mask = self.df_search["municipio_tjsp"].isnull()
+        df_temp = self.df_search[mask]
+        if len(df_temp) > 0:
+            print(df_temp)
+            raise RuntimeError("Tratar")
+
+        # Reordena
+        self.df_search = self.df_search[
+            [
+                "id_municipio_ibge",
+                "id_municipio_tjsp",
+                # "municipio_nome",
+                "municipio_tjsp",
+                "municipio_tjsp_corrigido",
+            ]
+        ]
+
+        return self.df_search
 
     # def request_aws(self, access_key_id, access_key_secret) -> pd.DataFrame:
     #     # Cria Gateway
@@ -174,114 +271,7 @@ class ListarMunicipios:
     #         # Encerra o worker
     #         gateway.shutdown()
 
-    def _transform_municipios_tjsp(self) -> pd.DataFrame:
-        """
-        Faz ajustes na tabela
-        """
-
-        if not isinstance(self.df_municipios_tjsp, pd.DataFrame):
-            raise TypeError("Precisa ser uma tabela")
-
-        # Remove Duplicados
-        self.df_municipios_tjsp = self.df_municipios_tjsp.drop_duplicates()
-
-        # Ordena a tabela
-        self.df_municipios_tjsp = self.df_municipios_tjsp.iloc[
-            self.df_municipios_tjsp["municipio_tjsp"].str.normalize("NFKD").argsort()
-        ]
-
-        # Reseta Índice
-        self.df_municipios_tjsp = self.df_municipios_tjsp.reset_index(drop=True)
-
-        # Aplica strip em tudo
-        self.df_municipios_tjsp = self.df_municipios_tjsp.map(
-            lambda x: x.strip() if isinstance(x, str) else x
-        )
-
-        if len(self.df_municipios_tjsp) != 645:
-            raise RuntimeError(
-                f"Está faltando município. Temos {len(self.df_municipios_tjsp)} municipíos."
-            )
-
-        # Resultados
-        return self.df_municipios_tjsp
-
-    def _fix_names(
-        self,
-        dict_replace={
-            # Nome Errado (TJSP): Nome Correto
-            "Estrela dOeste": "Estrela d'Oeste",
-            "Luís Antônio": "Luiz Antônio",
-            "Florínia": "Florínea",
-        },
-    ) -> pd.DataFrame:
-        """
-        Ajusto o nome dos municípios de acordo com a tabela existente no projeto [open-geodata](https://github.com/michelmetran/open-geodata).
-
-        :param dict_replace: _description_, defaults to { "Estrela dOeste": "Estrela d'Oeste", "Luís Antônio": "Luiz Antônio", "Florínia": "Florínea", }
-        :return: _description_
-        """
-        # Crio Cópia da Coluna
-        self.df_municipios_tjsp["municipio_tjsp_corrigido"] = self.df_municipios_tjsp[
-            "municipio_tjsp"
-        ]
-
-        # Renomeia Municípios com Dicionário
-        self.df_municipios_tjsp["municipio_tjsp_corrigido"] = self.df_municipios_tjsp[
-            "municipio_tjsp_corrigido"
-        ].replace(dict_replace)
-
-        # Merge
-        self.df_municipios_tjsp = pd.merge(
-            left=self.df_municipios_geo,
-            right=self.df_municipios_tjsp,
-            left_on="municipio_nome",
-            right_on="municipio_tjsp_corrigido",
-            how="left",
-        )
-
-        # Deleta Colunas
-        self.df_municipios_tjsp = self.df_municipios_tjsp.drop(
-            labels="municipio_nome",
-            axis="columns",
-            inplace=False,
-            errors="ignore",
-        )
-        # Renomeia Colunas
-        self.df_municipios_tjsp = self.df_municipios_tjsp.rename(
-            {"id_municipio": "id_municipio_ibge"},
-            axis="columns",
-        )
-
-        # Encontre erros
-        mask = self.df_municipios_tjsp["municipio_tjsp"].isnull()
-        df_temp = self.df_municipios_tjsp[mask]
-        if len(df_temp) > 0:
-            print(df_temp)
-            raise RuntimeError("Tratar")
-
-        # Reordena
-        self.df_municipios_tjsp = self.df_municipios_tjsp[
-            [
-                "id_municipio_ibge",
-                "id_municipio_tjsp",
-                # "municipio_nome",
-                "municipio_tjsp",
-                "municipio_tjsp_corrigido",
-            ]
-        ]
-
-        return self.df_municipios_tjsp
-
-
-class ListarUnidades:
-    def __init__(
-        self,
-    ) -> None:
-
-        self.df_unidades = None
-
-    def get_unidades(self, id_municipio_tjsp: int) -> pd.DataFrame:
+    def detalhe(self, id_municipio_tjsp: int) -> pd.DataFrame:
         """
         Pega a lista de unidades (Fóruns) de um determinado Município,
         a partir do Código do Município do TJSP
@@ -311,7 +301,6 @@ class ListarUnidades:
 
             comarca = text_comarca.split(" - ")[0]
             raj = text_comarca.strip().split(" - ")[-1]
-            # print(raj)
 
             # comarca = comarca.split('está jurisdicionado à Comarca ')
             comarca = comarca.replace("Município ", "")
@@ -340,11 +329,11 @@ class ListarUnidades:
                 "municipio_tjsp": mun.strip(),
                 "comarca_tjsp": com.strip(),
                 "comarca_sede": comarca_sede,
-                "imoveis": lista_unidades,
+                "imovel": lista_unidades,
             }
         )
 
-    def get_unidades_batch(self, list_id_tjsp: list, max_workers=None) -> pd.DataFrame:
+    def detalhe_batch(self, max_workers=None) -> pd.DataFrame:
         """
         _summary_
 
@@ -358,6 +347,7 @@ class ListarUnidades:
         if max_workers is None:
             max_workers = get_default_workers()
 
+        list_id_tjsp = list(self.df_search["id_municipio_tjsp"])
         # Deduplica e remove valores nulos/inválidos da lista de IDs antes de disparar as threads
         ids_limpos = list(filter(None, set(list_id_tjsp)))
 
@@ -366,7 +356,7 @@ class ListarUnidades:
         with concurrent.futures.ThreadPoolExecutor(max_workers=max_workers) as executor:
             # 1. Submete as tarefas mapeando cada Future ao seu id_tjsp correspondente
             future_to_id = {
-                executor.submit(self.get_unidades, id_tjsp): id_tjsp
+                executor.submit(self.detalhe, id_tjsp): id_tjsp
                 for id_tjsp in ids_limpos
             }
 
@@ -384,15 +374,18 @@ class ListarUnidades:
 
         # Concatena apenas DataFrames válidos
         if results:
-            self.df_unidades = pd.concat(
+            self.df_detalhes = pd.concat(
                 objs=results,
                 ignore_index=True,
             )
-            self.df_unidades = self.df_unidades.map(
+            self.df_detalhes = self.df_detalhes.map(
                 lambda x: x.strip() if isinstance(x, str) else x
             )
 
-        else:
-            self.df_unidades = pd.DataFrame()
+            # Elimina os Duplicados
+            self.df_detalhes = self.df_detalhes.drop_duplicates()
 
-        return self.df_unidades
+        else:
+            self.df_detalhes = pd.DataFrame()
+
+        return self.df_detalhes

@@ -2259,8 +2259,8 @@ wheels = [
 
 [[package]]
 name = "tjsp-unidades"
-version = "0.1.0"
-source = { virtual = "." }
+version = "0.1.8"
+source = { editable = "." }
 dependencies = [
     { name = "lxml" },
     { name = "notebook" },
