@@ -8,7 +8,7 @@ import urllib.request
 import pandas as pd
 from lxml import html
 
-from .small_functions import keep_numbers
+from ..transform.small_functions import keep_numbers
 
 
 class QuemSomos:
@@ -108,6 +108,10 @@ class QuemSomos:
                 "juiz_diretor_email",
             ]
         ]
+
+        # Aplica Strip em tudo
+        df_raj = df_raj.map(lambda x: x.strip() if isinstance(x, str) else x)
+
         return df_raj
 
     @property
@@ -166,6 +170,9 @@ class QuemSomos:
         df_cj = df_cj.reset_index(drop=True)
         df_cj = df_cj.drop_duplicates()
 
+        # Aplica Strip em tudo
+        df_cj = df_cj.map(lambda x: x.strip() if isinstance(x, str) else x)
+
         # Results
         return df_cj
 
@@ -217,5 +224,9 @@ class QuemSomos:
 
         # Results
         comarcas = df["comarca_tjsp"]
+
+        # Aplica Strip em tudo
+        df = df.map(lambda x: x.strip() if isinstance(x, str) else x)
+
         print(f"São {len(set(comarcas))} comarcas")
         return df
