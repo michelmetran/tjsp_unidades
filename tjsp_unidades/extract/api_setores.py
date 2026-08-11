@@ -18,6 +18,8 @@ class ListarSetores:
     def __init__(self, listar_unidades: ListarUnidades):
         self.listar_unidades = listar_unidades
 
+        self.lista_unidade = list(self.listar_unidades.df_unidades["unidades"])
+
     def get_setores(self, termo: str) -> pd.DataFrame:
         """
         Pega a lista de unidades (Fóruns) de um determinado Município,
@@ -56,12 +58,8 @@ class ListarSetores:
 
         :return: Número de caracteres máximo
         """
-        # Cria Lista com Nomes de Municípios
-        lista_unidade = list(self.listar_unidades.df_unidades["unidades"])
-
         # Número de Caracteres
-        n_caracteres_mun_max = max([len(x) for x in lista_unidade])
-        return n_caracteres_mun_max
+        return max([len(x) for x in self.lista_unidade])
 
     @property
     def list_termos(self):
@@ -70,13 +68,12 @@ class ListarSetores:
 
         :return: Lista de termos
         """
-        # Cria Lista com Nomes de Municípios
-        lista_unidade = list(self.listar_unidades.df_unidades["unidades"])
-
         # Cria Lista de Termos a sere pesquisados
         list_termos = []
         for i in range(self.n_caracteres_mun_max)[3:]:
-            lista_temp = list(set([mun[:i] for mun in lista_unidade if len(mun) >= i]))
+            lista_temp = list(
+                set([mun[:i] for mun in self.lista_unidade if len(mun) >= i])
+            )
             for search_text in lista_temp:
                 list_termos.append(search_text)
 

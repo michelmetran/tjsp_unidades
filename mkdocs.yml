@@ -4,7 +4,7 @@ site_author: Michel Metran
 site_description: Obtem dados de médicos acessando informações do Conselho Federal de Medicina usando python!
 site_url: https://tjsp.readthedocs.io/
 copyright: |
-  &copy; 2025 <a href="https://github.com/michelmetran"  target="_blank" rel="noopener">Michel Metran</a>
+  &copy; 2026 <a href="https://github.com/michelmetran"  target="_blank" rel="noopener">Michel Metran</a>
 
 # GitHub Repo Link
 repo_url: https://github.com/michelmetran/tjsp_unidades
@@ -18,21 +18,24 @@ nav:
   - Home:
       - Home: index.md
       - Concepção: pages/concepção.md
+      - Como Contribuir?: pages/como-contribuir.md
+      - Me, Myself and I: pages/autor.md
   - Como Instalar?: pages/como-instalar.md
   - Como Usar?:
-      - RAJs, CJs e Comarcas: scripts/01_get_comarcas.ipynb
-      - Município e IDs TJSP: scripts/02_get_municipios.ipynb
-      - Navegador/Driver: scripts/03_get_unidades.ipynb
-  #     - Login: scripts/login.ipynb
+      Obter Dados:
+        - RAJs, CJs e Comarcas: scripts/10_get_data_quem_somos.ipynb
+        - Município e IDs TJSP: scripts/11_get_data_listar_municipios.ipynb
+        - Navegador/Driver: scripts/12_get_data_listar_unidades.ipynb
+      Tratar Dados:
+        - ETL: scripts/13_transform.ipynb
   #     - Dados Cadastrais: scripts/cadastro.ipynb
   #     - Gerenciamento de Perfil: scripts/gerenciamento_perfil.ipynb
   #     - Consulta de Processos: scripts/consulta_processo.ipynb
   # - Histórico: pages/histórico.md
-  - Como Contribuir?: pages/como-contribuir.md
+
   # - Page Object Model: pages/pacote.md
   # - Bugs: pages/bugs.md
   # - Intimações: pages/intimações.md
-  - Me, Myself and I: pages/autor.md
 
 theme:
   # Breadcrumbs

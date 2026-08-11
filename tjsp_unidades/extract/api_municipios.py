@@ -20,8 +20,11 @@ class ListarMunicipios:
         """
         *Endpoint* para `ListarMunicipios` do TJSP.
         """
-
+        # ddd
         self.df_municipios_geo = geo.load_dataset(db="sp", name="tab.municipio_nome")
+
+        # Cria Lista com Nomes de Municípios
+        self.lista_municipios = list(self.df_municipios_geo["municipio_nome"])
 
     def get_lista_municipios_tjsp(self, termo: str) -> pd.DataFrame:
         """
@@ -66,12 +69,8 @@ class ListarMunicipios:
 
         :return: Número de caracteres máximo
         """
-        # Cria Lista com Nomes de Municípios
-        lista_municipios = list(self.df_municipios_geo["municipio_nome"])
-
         # Número de Caracteres
-        n_caracteres_mun_max = max([len(x) for x in lista_municipios])
-        return n_caracteres_mun_max
+        return max([len(x) for x in self.lista_municipios])
 
     @property
     def list_termos(self):
@@ -80,14 +79,12 @@ class ListarMunicipios:
 
         :return: Lista de termos
         """
-        # Cria Lista com Nomes de Municípios
-        lista_municipios = list(self.df_municipios_geo["municipio_nome"])
 
         # Cria Lista de Termos a sere pesquisados
         list_termos = []
         for i in range(self.n_caracteres_mun_max)[3:]:
             lista_municipios_temp = list(
-                set([mun[:i] for mun in lista_municipios if len(mun) >= i])
+                set([mun[:i] for mun in self.lista_municipios if len(mun) >= i])
             )
             for search_text in lista_municipios_temp:
                 list_termos.append(search_text)
