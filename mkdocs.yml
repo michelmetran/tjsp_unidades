@@ -1,7 +1,7 @@
 # Basic
 site_name: TJSP
 site_author: Michel Metran
-site_description: Obtem dados de médicos acessando informações do Conselho Federal de Medicina usando python!
+site_description: O objetivo do presente repositório é manter rotinas e códigos para obtenção de dados atualizados do TJSP.
 site_url: https://tjsp-unidades.readthedocs.io/
 copyright: |
   &copy; 2026 <a href="https://github.com/michelmetran"  target="_blank" rel="noopener">Michel Metran</a>
@@ -29,17 +29,9 @@ nav:
           - Comarcas: scripts/12_get_data_quem_somos_comarcas.ipynb
           - Município: scripts/13_get_data_listar_municipios.ipynb
           - Imóveis: scripts/14_get_data_listar_imovel.ipynb
-          - Setores: scripts/15_get_data_listar_imoveis.ipynb
+          - Setores: scripts/15_get_data_setores.ipynb
       - Tratar Dados:
           - ETL: scripts/20_transform.ipynb
-  #     - Dados Cadastrais: scripts/cadastro.ipynb
-  #     - Gerenciamento de Perfil: scripts/gerenciamento_perfil.ipynb
-  #     - Consulta de Processos: scripts/consulta_processo.ipynb
-  # - Histórico: pages/histórico.md
-
-  # - Page Object Model: pages/pacote.md
-  # - Bugs: pages/bugs.md
-  # - Intimações: pages/intimações.md
 
 theme:
   # Breadcrumbs
@@ -69,7 +61,7 @@ theme:
   palette:
     # Palette toggle for automatic mode
     - media: "(prefers-color-scheme)"
-      primary: green
+      primary: red
       accent: indigo
       toggle:
         icon: material/brightness-auto
@@ -78,7 +70,7 @@ theme:
     # Palette toggle for light mode
     - media: "(prefers-color-scheme: light)"
       scheme: default
-      primary: green
+      primary: red
       accent: indigo
       toggle:
         icon: material/brightness-7
@@ -87,7 +79,7 @@ theme:
     # Palette toggle for dark mode
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
-      primary: green
+      primary: red
       accent: indigo
       toggle:
         icon: material/brightness-4

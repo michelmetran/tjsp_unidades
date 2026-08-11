@@ -18,7 +18,7 @@ logger = logging.getLogger(__name__)
 class Imovel:
     def __init__(self, municipio: Municipio):
         self.municipio = municipio
-        self.lista_imovel = list(municipio.df_detalhes["imovel"])
+        self._lista_imovel = list(municipio.df_detalhes["imovel"])
 
     def search(self, termo: str) -> pd.DataFrame:
         """
@@ -60,7 +60,7 @@ class Imovel:
         :return: Número de caracteres máximo
         """
         # Número de Caracteres
-        return max([len(x) for x in self.lista_imovel])
+        return max([len(x) for x in self._lista_imovel])
 
     @property
     def _list_termos(self):
@@ -76,9 +76,9 @@ class Imovel:
         # Flattens a lista de "frases" em uma única lista de palavras
         list_imovel = [
             palavra.lower()
-            for imovel in self.lista_imovel
+            for imovel in self._lista_imovel
             for palavra in imovel.split()
-            if len(palavra) > 4
+            if len(palavra) > numero_minimo_caracteres
         ]
         list_imovel = list(set(list_imovel))
 
@@ -109,7 +109,8 @@ class Imovel:
         results = []
         with concurrent.futures.ThreadPoolExecutor(max_workers=max_workers) as executor:
             future_to_term = {
-                executor.submit(self.search, term): term for term in self._list_termos
+                executor.submit(self.search, termo): termo
+                for termo in self._list_termos
             }
 
             # 3. Processa conforme completam (as_completed) para melhor tratamento de erros
@@ -132,14 +133,14 @@ class Imovel:
             )
 
             # Faz os ajustes na tabela
-            self._transform_municipios_tjsp()
+            self._transform_search()
 
         else:
             self.df_search = pd.DataFrame()
 
         return self.df_search
 
-    def _transform_municipios_tjsp(self) -> pd.DataFrame:
+    def _transform_search(self) -> pd.DataFrame:
         """
         Faz ajustes na tabela
         """
@@ -178,7 +179,68 @@ class Imovel:
             timeout=60,
         )
 
-        return r, self._tratar_response(response=r, id_imovel=id_imovel)
+        # Create Dictionary
+        dd = self._tratar_response(response=r, id_imovel=id_imovel)
+
+        # Create Pandas
+        return pd.DataFrame([dd])
+
+    def detalhe_batch(self, max_workers=None) -> pd.DataFrame:
+        """
+        _summary_
+
+        :param df_mun: _description_
+        :type df_mun: _type_
+        :return: _description_
+        :rtype: pd.DataFrame
+        """
+
+        # Se o usuário não passar o parâmetro, calcula o padrão dinâmico
+        if max_workers is None:
+            max_workers = get_default_workers()
+
+        list_id_tjsp = list(self.df_search["id_imovel"])
+
+        # ssss
+        list_id_tjsp = range(1200)
+
+        # Deduplica e remove valores nulos/inválidos da lista de IDs antes de disparar as threads
+        ids_limpos = list(filter(None, set(list_id_tjsp)))
+
+        results = []
+
+        with concurrent.futures.ThreadPoolExecutor(max_workers=max_workers) as executor:
+            # 1. Submete as tarefas mapeando cada Future ao seu id_tjsp correspondente
+            future_to_id = {
+                executor.submit(self.detalhe, id_tjsp): id_tjsp
+                for id_tjsp in ids_limpos
+            }
+
+            # 2. Processa conforme completam (as_completed) para isolar erros
+            for future in concurrent.futures.as_completed(future_to_id):
+                id_tjsp = future_to_id[future]
+                try:
+                    res = future.result()
+                    # Valida se o retorno é um DataFrame válido e não-vazio
+                    if isinstance(res, pd.DataFrame) and not res.empty:
+                        results.append(res)
+
+                except Exception as exc:
+                    logger.error(f"Erro ao processar o ID '{id_tjsp}': {exc}")
+
+        # Concatena apenas DataFrames válidos
+        if results:
+            self.df_detalhes = pd.concat(
+                objs=results,
+                ignore_index=True,
+            )
+
+            self._transform_detalhes()
+
+        else:
+            self.df_detalhes = pd.DataFrame()
+
+        return self.df_detalhes
 
     def obter_imovel(self, id_imovel: int):
 
@@ -190,7 +252,8 @@ class Imovel:
             json={"codigo": id_imovel},
             timeout=60,
         )
-        return r, self._tratar_response(response=r, id_imovel=id_imovel)
+        dd = self._tratar_response(response=r, id_imovel=id_imovel)
+        return pd.DataFrame([dd])
 
     def _tratar_response(self, response, id_imovel):
 
@@ -198,9 +261,10 @@ class Imovel:
         soup = BeautifulSoup(response.text, "html.parser")
 
         try:
-            unidade = soup.find(name="h3", attrs={"id": "imovelNome"}).text.strip()
+            imovel = soup.find(name="h3", attrs={"id": "imovelNome"}).text.strip()
+
         except:
-            unidade = "Sem nome"
+            imovel = "Sem nome"
 
         endereco = (
             soup.find("dt", string=re.compile(".*Endereço.*", flags=re.DOTALL))
@@ -283,7 +347,7 @@ class Imovel:
 
         tj_dict = {
             "id_imovel": id_imovel,
-            "unidade": unidade,
+            "imovel": imovel,
             "endereco": endereco,
             "telefone": telefone,
             "fax": fax,
@@ -291,8 +355,101 @@ class Imovel:
             "cj": cj,
             "num_varas_instaladas": num_varas_instaladas,
             "entrancia": entrancia,
-            "comarca": comarca,
+            "comarca_tjsp": comarca,
             "dist_capital": dist_capital,
             "tensao_eletrica": tensao_eletrica,
         }
         return tj_dict
+
+    def _transform_detalhes(self) -> pd.DataFrame:
+        """
+        Faz ajustes na tabela
+        """
+
+        if not isinstance(self.df_detalhes, pd.DataFrame):
+            raise TypeError("Precisa ser uma tabela")
+
+        # Aplica strip em todo o dataframe
+        self.df_detalhes = self.df_detalhes.map(
+            lambda x: x.strip() if isinstance(x, str) else x
+        )
+
+        # Elimina os Duplicados
+        self.df_detalhes = self.df_detalhes.drop_duplicates()
+
+        # Elimina
+        mask = (
+            (self.df_detalhes["imovel"] == "")
+            & (self.df_detalhes["telefone"] == "Não Informado")
+            & (self.df_detalhes["fax"] == "Não Informado")
+            & (self.df_detalhes["email"] == "Não Informado")
+            & (self.df_detalhes["cj"] == "Não Informado")
+            & (self.df_detalhes["entrancia"] == "Não Informado")
+            & (self.df_detalhes["comarca_tjsp"] == "Não Informado")
+            & (self.df_detalhes["dist_capital"] == "Não Informado")
+            & (self.df_detalhes["tensao_eletrica"] == "Não Informado")
+        )
+        self.df_detalhes = self.df_detalhes[~mask]
+
+        # Remove ; do fim da coluna Telefone
+        self.df_detalhes["telefone"] = self.df_detalhes["telefone"].str.replace(
+            r"\;$", "", regex=True
+        )
+
+        # Remove ; do fim da coluna Fax
+        self.df_detalhes["fax"] = self.df_detalhes["fax"].str.replace(
+            r"\;$", "", regex=True
+        )
+
+        self.df_detalhes[["endereco_lougradouro", "endereco_p2"]] = self.df_detalhes[
+            "endereco"
+        ].str.split(" - CEP ", n=1, expand=True)
+
+        self.df_detalhes[["endereco_cep", "endereco_municipio", "endereco_uf"]] = (
+            self.df_detalhes["endereco_p2"].str.split(" - ", n=3, expand=True)
+        )
+
+        # Remove Columns
+        self.df_detalhes = self.df_detalhes.drop(
+            labels=["endereco_p1", "endereco_p2", "endereco"],
+            inplace=False,
+            errors="ignore",
+            axis="columns",
+        )
+
+        # Aplica strip em todo o dataframe
+        self.df_detalhes = self.df_detalhes.map(
+            lambda x: x.strip() if isinstance(x, str) else x
+        )
+
+        # Converte para Número
+        self.df_detalhes["dist_capital"] = self.df_detalhes["dist_capital"].str.replace(
+            "Não Informado", ""
+        )
+        self.df_detalhes["dist_capital"] = (
+            self.df_detalhes["dist_capital"]
+            .astype(str)
+            .str.replace(r"(?i)\s*km\s*$", "", regex=True)  # remove "Km"
+            .str.strip()
+            .replace("", pd.NA)
+            .astype(float)
+        )
+
+        # Converte para Número
+        self.df_detalhes["num_varas_instaladas"] = self.df_detalhes[
+            "num_varas_instaladas"
+        ].astype(int)
+
+        # Ordena
+        self.df_detalhes = self.df_detalhes.sort_values(
+            by="id_imovel",
+            ascending=True,
+        )
+
+        # Reset Index
+        self.df_detalhes = self.df_detalhes.reset_index(drop=True, inplace=False)
+
+        # Remove Duplicados
+        self.df_detalhes = self.df_detalhes.drop_duplicates()
+
+        return self.df_detalhes

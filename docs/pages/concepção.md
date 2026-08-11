@@ -4,7 +4,7 @@
 
 A ideia iniciar foi "raspar" as informações da lista de CJs, RAJs e Comarcas da sessão ["Quem Somos"](https://www.tjsp.jus.br/QuemSomos/QuemSomos/RegioesAdministrativasJudiciarias) do _site_ do TJSP. Ainda faltaria a informação de cada um dos 645 municípios do Estado e a vinculação com a Comarca, assunto resolvido com outro _script_.
 
-Para raspar os dados foi usado o _Selenium_, no _script_ [10_get_data_quem_somos](./scripts/10_get_data_quem_somos.ipynb). Como resultado foram obtidas as listas de:
+Para raspar os dados foi usado o _Selenium_, no _script_ [10_get_data_quem_somos_rajs](./../scripts/10_get_data_quem_somos_rajs.ipynb). Como resultado foram obtidas as listas de:
 
 - **Comarcas**: totalizando 321 Comarcas do Estado (_descobri que tratam-se, na realidade, de 320 Comarcas... segue a leitura..._)
 - **Circunscrições Judiciárias**, totalizando 57 CJs no Estado (56 mais a Capital!)
@@ -16,7 +16,7 @@ Para raspar os dados foi usado o _Selenium_, no _script_ [10_get_data_quem_somos
 
 ## _Script_ 2: Método `POST`
 
-Faltava ainda descobrir qual a Comarca dos 645 municípios do Estado de São Paulo, para conseguir relacioná-los a lista das 321 Comarcas (até então). Descobri que por meio da [Lista Telefônica](https://www.tjsp.jus.br/ListaTelefonica) era possível pesquisar um determinado município e obter as unidades do Poder Judiciário que tem atribuição no município pesquisado! Pronto! Era necessário apenas consultar todos os municípios agora, o que foi feito com auxílio do _script_ [11_get_data_listar_municipios](./scripts/11_get_data_listar_municipios.ipynb).
+Faltava ainda descobrir qual a Comarca dos 645 municípios do Estado de São Paulo, para conseguir relacioná-los a lista das 321 Comarcas (até então). Descobri que por meio da [Lista Telefônica](https://www.tjsp.jus.br/ListaTelefonica) era possível pesquisar um determinado município e obter as unidades do Poder Judiciário que tem atribuição no município pesquisado! Pronto! Era necessário apenas consultar todos os municípios agora, o que foi feito com auxílio do _script_ [13_get_data_listar_municipios](./../scripts/13_get_data_listar_municipios.ipynb).
 
 ![](https://i.imgur.com/I2iKlnE.png)
 
@@ -38,7 +38,7 @@ Após ajustar a tabela e como resultado, observei a existência de 320 Comarcas,
 
 ## _Script_ 3: Comarcas: o que está certo?
 
-O _script_ [20_transform](./scripts/20_transform.ipynb) leu as informações das Comarcas obtidas no _script_ 1 e 2, visando compara-las e encontrar onde estava a diferença:
+O _script_ [20_transform](./../scripts/20_transform.ipynb) leu as informações das Comarcas obtidas no _script_ 1 e 2, visando compara-las e encontrar onde estava a diferença:
 
 - De acordo com o _script_ 1 existem 321 Comarcas
 - De acordo com o _script_ 2 existem 320 Comarcas
@@ -59,7 +59,7 @@ O _script_ atualiza informações, trazendo o número da CJ para a tabela de Com
 
 ## _Script_ 4: Compilação de Dados e Mapas
 
-Um quarto _script_ [30_results_geodata](./scripts/30_results_geodata.ipynb) compila essas informações em uma talela única, gerando um mapa contendo a delimitação dos 645 municíos com todas as informações associadas.
+Um quarto _script_ [30_results_geodata](./../scripts/30_results_geodata.ipynb) compila essas informações em uma talela única, gerando um mapa contendo a delimitação dos 645 municíos com todas as informações associadas.
 
 <br>
 
@@ -67,4 +67,4 @@ Um quarto _script_ [30_results_geodata](./scripts/30_results_geodata.ipynb) comp
 
 ## _Script_ 5: _Webmap_
 
-Para finalizar, o _script_ [31_results_create_map](./scripts/31_results_create_map.ipynb) foi também gerado um _webmap_, para facilitar a visualização de dados.
+Para finalizar, o _script_ [31_results_create_map](./../scripts/31_results_create_map.ipynb) foi também gerado um _webmap_, para facilitar a visualização de dados.

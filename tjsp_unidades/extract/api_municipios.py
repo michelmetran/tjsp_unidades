@@ -80,10 +80,11 @@ class Municipio:
 
         :return: Lista de termos
         """
-
         # Cria Lista de Termos a sere pesquisados
         list_termos = []
-        for i in range(self._n_caracteres_mun_max)[3:]:
+        numero_minimo_caracteres = 3
+
+        for i in range(self._n_caracteres_mun_max)[numero_minimo_caracteres:]:
             lista_municipios_temp = list(
                 set([mun[:i] for mun in self._lista_municipios if len(mun) >= i])
             )
