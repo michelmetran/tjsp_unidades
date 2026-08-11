@@ -1,6 +1,6 @@
 [project]
 name = "tjsp_unidades"
-version = "0.1.12"
+version = "0.1.13"
 description = "Obtem Unidades Administrativas do Tribunal de Justiça do Estado de São Paulo"
 readme = "README.md"
 requires-python = "~=3.12.0"
