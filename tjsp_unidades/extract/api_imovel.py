@@ -423,15 +423,30 @@ class Imovel:
         )
 
         # Converte para Número
-        self.df_detalhes["dist_capital"] = self.df_detalhes["dist_capital"].str.replace(
-            "Não Informado", ""
-        )
+        # self.df_detalhes["dist_capital"] = pd.to_numeric(
+        #     self.df_detalhes["dist_capital"].str.replace(" Km", "", regex=False),
+        #     errors="coerce",
+        # )
+        # self.df_detalhes["dist_capital"] = (
+        #     self.df_detalhes["dist_capital"]
+        #     .str.extract(r"(\d+(?:\.\d+)?)")
+        #     .astype(float)
+        # )
+
+        # self.df_detalhes["dist_capital"] = self.df_detalhes["dist_capital"].str.replace(
+        #     "Não Informado", ""
+        # )
+        # self.df_detalhes["dist_capital"] = (
+        #     self.df_detalhes["dist_capital"]
+        #     .astype(str)
+        #     .str.replace(r"(?i)\s*km\s*$", "", regex=True)  # remove "Km"
+        #     .str.strip()
+        #     .replace("", pd.NA)
+        #     .astype(float)
+        # )
         self.df_detalhes["dist_capital"] = (
             self.df_detalhes["dist_capital"]
-            .astype(str)
-            .str.replace(r"(?i)\s*km\s*$", "", regex=True)  # remove "Km"
-            .str.strip()
-            .replace("", pd.NA)
+            .str.extract(r"(\d+(?:\.\d+)?)")
             .astype(float)
         )
 
