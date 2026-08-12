@@ -29,7 +29,10 @@ jobs:
           python-version: "3.11"
           enable-cache: true
 
-      - name: Install dependencies
+      - name: Look Dependencies
+        run: uv lock
+
+      - name: Install Dependencies
         run: uv sync --locked --all-extras --dev
 
       - name: Build
