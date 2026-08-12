@@ -32,8 +32,12 @@ jobs:
       - name: Lock UV dependencies
         run: uv lock
 
+      - name: Lock UV dependencies2
+        run: uv lock
+
       - name: Install the project
-        run: uv sync --locked --all-extras --dev
+        #run: uv sync --locked --all-extras --docs
+        run: uv sync --locked
 
       - name: Build
         run: uv build
