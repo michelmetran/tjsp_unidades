@@ -8,6 +8,10 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    # Permissão necessária para autenticação via OIDC no PyPI (Sem token fixo)
+    permissions:
+      id-token: write
+
     steps:
       # https://github.com/actions/checkout
       - name: Check out repository
@@ -18,20 +22,19 @@ jobs:
         uses: astral-sh/setup-uv@v5
 
       # https://github.com/actions/setup-python
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - name: Install uv & Set up Python
+        uses: astral-sh/setup-uv@v5
         with:
+          version: "latest"
           python-version: "3.11"
-          # python-version-file: '.python-version'
+          enable-cache: true
 
-      - name: Lock UV dependencies
-        run: uv lock
-
-      - name: Install the project
+      - name: Install dependencies
         run: uv sync --locked --all-extras --dev
 
       - name: Build
         run: uv build
 
       - name: Publish
-        run: uv publish -t ${{ secrets.PYPI_TOKEN }}
+        run: uv publish
+        #run: uv publish -t ${{ secrets.PYPI_TOKEN }}
