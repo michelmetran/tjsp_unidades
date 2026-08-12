@@ -4,9 +4,9 @@ Tratando-se de um pacote com as dependência gerenciadas pelo [uv](https://docs.
 
 ```shell
 # Define a versão do python
-uv python pin 3.11
+uv python pin 3.12
 
-# 
+#
 uv lock --upgrade
 
 # Instala os pacotes definidos no pyproject.toml

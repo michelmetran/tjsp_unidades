@@ -1,9 +1,9 @@
 [project]
 name = "tjsp_unidades"
-version = "0.1.14"
+version = "0.1.15"
 description = "Obtem Unidades Administrativas do Tribunal de Justiça do Estado de São Paulo"
 readme = "README.md"
-requires-python = ">=3.11"
+requires-python = ">=3.12"
 dependencies = [
     "lxml>=6.1.1",
     "notebook>=7.5.7",
@@ -34,11 +34,10 @@ artifacts = ["**/data/*.csv", "**/data/**/*.csv"]
 
 # Se você quiser que o uv lock garanta que suas dependências continuem funcionando tanto no Python 3.11 quanto em
 # versões mais recentes (como 3.12 ou 3.13), use:
-[tool.uv]
-environments = [
-    "python_version >= '3.11'"
-]
-
+# [tool.uv]
+# environments = [
+#     "python_version >= '3.11'"
+# ]
 
 [project.urls]
 Issues = "https://github.com/michelmetran/tjsp_unidades/issues/"
