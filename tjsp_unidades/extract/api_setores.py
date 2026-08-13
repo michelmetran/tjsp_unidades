@@ -9,7 +9,7 @@ import pandas as pd
 from bs4 import BeautifulSoup
 
 from .api_municipios import Municipio
-from .sss import get_default_workers, get_session
+from ..utils.helpers import get_default_workers, get_session
 
 logger = logging.getLogger(__name__)
 

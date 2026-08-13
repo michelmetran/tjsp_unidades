@@ -6,12 +6,14 @@ https://www.tjsp.jus.br/ListaTelefonica
 import concurrent.futures
 import logging
 
-import open_geodata as geo
 import pandas as pd
+import requests
 from bs4 import BeautifulSoup
 from more_itertools import one
 
-from .sss import get_default_workers, get_session
+from ..utils.helpers import get_default_workers, get_session
+
+# import open_geodata as geo
 
 logger = logging.getLogger(__name__)
 
@@ -22,10 +24,44 @@ class Municipio:
         *Endpoint* para `ListarMunicipios` do TJSP.
         """
         # Obtem uma lista de nomes de municípios
-        self.df_municipios_geo = geo.load_dataset(db="sp", name="tab.municipio_nome")
+        # self.df_municipios_geo = geo.load_dataset(db="sp", name="tab.municipio_nome")
+        self.df_municipios_geo = self.municipios_ibge()
 
         # Cria Lista com Nomes de Municípios
         self._lista_municipios = list(self.df_municipios_geo["municipio_nome"])
+
+    def municipios_ibge(self) -> pd.DataFrame:
+        """
+        Obtem tabela de municípios do IBGE. Corrige os nomes errados que estão no IBGE.
+
+        :return: Tabela contendo o nome dos municípios do Estado de São Paulo, bem com
+        """
+
+        r = requests.get(
+            url="https://servicodados.ibge.gov.br/api/v1/localidades/estados/35/municipios"
+        )
+
+        if r.status_code == 200:
+            municipios = r.json()
+            nomes = [{"id": m["id"], "nome": m["nome"]} for m in municipios]
+
+            # Cria DataFrame
+            df = pd.DataFrame(nomes)
+
+            # Renomear Colunas
+            df = df.rename(columns={"id": "id_municipio", "nome": "municipio_nome"})
+
+            # Arrumar Nomes Errados do IBGE
+            df["municipio_nome"] = df["municipio_nome"].replace(
+                {
+                    "Biritiba Mirim": "Biritiba-Mirim",
+                    "Luís Antônio": "Luiz Antônio",
+                }
+            )
+            return df
+
+        else:
+            raise RuntimeError("A API do IBGE não funcionou")
 
     def search(self, termo: str) -> pd.DataFrame:
         """
@@ -40,7 +76,7 @@ class Municipio:
         :raises Exception: _description_
         """
         if len(termo) < 3:
-            raise Exception("A pesquisa de município deve ter mais de 3 caracteres")
+            raise RuntimeError("A pesquisa de município deve ter mais de 3 caracteres")
 
         # Create Session
         session = get_session()
@@ -182,6 +218,7 @@ class Municipio:
             "Estrela dOeste": "Estrela d'Oeste",
             "Luís Antônio": "Luiz Antônio",
             "Florínia": "Florínea",
+            "Itaóca": "Itaoca",
         },
     ) -> pd.DataFrame:
         """
@@ -240,38 +277,6 @@ class Municipio:
 
         return self.df_search
 
-    # def request_aws(self, access_key_id, access_key_secret) -> pd.DataFrame:
-    #     # Cria Gateway
-    #     gateway = ApiGateway(
-    #         site="https://www.tjsp.jus.br",
-    #         access_key_id=access_key_id,
-    #         access_key_secret=access_key_secret,
-    #         regions=["sa-east-1"],
-    #         verbose=True,
-    #     )
-    #     gateway.pool_connections = 5
-    #     gateway.pool_maxsize = 5
-    #     gateway.start()
-
-    #     try:
-    #         # Cria Session
-    #         with requests.Session() as session:
-    #             session.mount(prefix="https://www.tjsp.jus.br", adapter=gateway)
-    #             list_dfs = []
-    #             for termo in self.list_termos:
-    #                 df_temp = self.get_lista_municipios_tjsp(termo=termo)
-    #                 list_dfs.append(df_temp)
-
-    #             self.df_tjsp = pd.concat(objs=list_dfs, ignore_index=True)
-
-    #     except requests.RequestException as e:
-    #         # Captura específica para erros de HTTP/Conexão
-    #         raise RuntimeError(f"Erro de conexão com o TJSP: {e}") from e
-
-    #     finally:
-    #         # Encerra o worker
-    #         gateway.shutdown()
-
     def detalhe(self, id_municipio_tjsp: int) -> pd.DataFrame:
         """
         Pega a lista de unidades (Fóruns) de um determinado Município,
@@ -303,12 +308,9 @@ class Municipio:
             comarca = text_comarca.split(" - ")[0]
             raj = text_comarca.strip().split(" - ")[-1]
 
-            # comarca = comarca.split('está jurisdicionado à Comarca ')
             comarca = comarca.replace("Município ", "")
             comarca = comarca.replace("está jurisdicionado à Comarca", " | ")
             comarca = comarca.replace("da Comarca", " | ")
-            # print(comarca)
-
             mun = comarca.strip().split(" | ")[0]
             com = comarca.strip().split(" | ")[-1]
 
@@ -317,9 +319,6 @@ class Municipio:
 
             else:
                 comarca_sede = 0
-
-            # print(text_comarca)
-            # print(text_comcarca.split('jurisdicionado à comarca '))
 
         lista_unidades = [x.text for x in soup.find_all("span")]
 

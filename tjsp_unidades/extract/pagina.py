@@ -8,7 +8,7 @@ import urllib.request
 import pandas as pd
 from lxml import html
 
-from ..transform.small_functions import keep_numbers
+from tjsp_unidades.utils.utils import keep_numbers
 
 
 class QuemSomos:

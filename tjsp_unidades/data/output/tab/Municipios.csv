@@ -132,7 +132,6 @@ id_municipio_ibge,id_municipio_tjsp,municipio_tjsp,municipio_tjsp_corrigido
 3511508,6634,Cerquilho,Cerquilho
 3511607,6635,Cesário Lange,Cesário Lange
 3511706,6636,Charqueada,Charqueada
-3557204,7147,Chavantes,Chavantes
 3511904,6637,Clementina,Clementina
 3512001,6638,Colina,Colina
 3512100,6639,Colômbia,Colômbia
@@ -173,13 +172,12 @@ id_municipio_ibge,id_municipio_tjsp,municipio_tjsp,municipio_tjsp_corrigido
 3515152,6674,Engenheiro Coelho,Engenheiro Coelho
 3515186,6675,Espírito Santo do Pinhal,Espírito Santo do Pinhal
 3515194,6676,Espírito Santo do Turvo,Espírito Santo do Turvo
-3557303,7148,Estiva Gerbi,Estiva Gerbi
-3515301,6678,Estrela do Norte,Estrela do Norte
 3515202,6677,Estrela dOeste,Estrela d'Oeste
+3515301,6678,Estrela do Norte,Estrela do Norte
 3515350,6679,Euclides da Cunha Paulista,Euclides da Cunha Paulista
 3515400,6680,Fartura,Fartura
-3515608,6682,Fernando Prestes,Fernando Prestes
 3515509,6681,Fernandópolis,Fernandópolis
+3515608,6682,Fernando Prestes,Fernando Prestes
 3515657,6683,Fernão,Fernão
 3515707,6684,Ferraz de Vasconcelos,Ferraz de Vasconcelos
 3515806,6685,Flora Rica,Flora Rica
@@ -233,9 +231,9 @@ id_municipio_ibge,id_municipio_tjsp,municipio_tjsp,municipio_tjsp_corrigido
 3520103,6733,Igarapava,Igarapava
 3520202,6734,Igaratá,Igaratá
 3520301,6735,Iguape,Iguape
+3520400,6736,Ilhabela,Ilhabela
 3520426,6737,Ilha Comprida,Ilha Comprida
 3520442,6738,Ilha Solteira,Ilha Solteira
-3520400,6736,Ilhabela,Ilhabela
 3520509,6739,Indaiatuba,Indaiatuba
 3520608,6740,Indiana,Indiana
 3520707,6741,Indiaporã,Indiaporã
@@ -254,7 +252,7 @@ id_municipio_ibge,id_municipio_tjsp,municipio_tjsp,municipio_tjsp_corrigido
 3521903,6754,Itajobi,Itajobi
 3522000,6755,Itaju,Itaju
 3522109,6756,Itanhaém,Itanhaém
-3522158,6757,Itaóca,Itaóca
+3522158,6757,Itaóca,Itaoca
 3522208,6758,Itapecerica da Serra,Itapecerica da Serra
 3522307,6759,Itapetininga,Itapetininga
 3522406,6760,Itapeva,Itapeva
@@ -337,15 +335,15 @@ id_municipio_ibge,id_municipio_tjsp,municipio_tjsp,municipio_tjsp_corrigido
 3529658,6837,Mesópolis,Mesópolis
 3529708,6838,Miguelópolis,Miguelópolis
 3529807,6839,Mineiros do Tietê,Mineiros do Tietê
-3530003,6841,Mira Estrela,Mira Estrela
 3529906,6840,Miracatu,Miracatu
+3530003,6841,Mira Estrela,Mira Estrela
 3530102,6842,Mirandópolis,Mirandópolis
 3530201,6843,Mirante do Paranapanema,Mirante do Paranapanema
 3530300,6844,Mirassol,Mirassol
 3530409,6845,Mirassolândia,Mirassolândia
 3530508,6846,Mococa,Mococa
-3530706,6848,Mogi Guaçu,Mogi Guaçu
 3530607,6847,Mogi das Cruzes,Mogi das Cruzes
+3530706,6848,Mogi Guaçu,Mogi Guaçu
 3530805,6849,Mogi Mirim,Mogi Mirim
 3530904,6850,Mombuca,Mombuca
 3531001,6851,Monções,Monções
@@ -355,8 +353,8 @@ id_municipio_ibge,id_municipio_tjsp,municipio_tjsp,municipio_tjsp_corrigido
 3531407,6855,Monte Aprazível,Monte Aprazível
 3531506,6856,Monte Azul Paulista,Monte Azul Paulista
 3531605,6857,Monte Castelo,Monte Castelo
-3531803,6859,Monte Mor,Monte Mor
 3531704,6858,Monteiro Lobato,Monteiro Lobato
+3531803,6859,Monte Mor,Monte Mor
 3531902,6860,Morro Agudo,Morro Agudo
 3532009,6861,Morungaba,Morungaba
 3532058,6862,Motuca,Motuca
@@ -376,9 +374,9 @@ id_municipio_ibge,id_municipio_tjsp,municipio_tjsp,municipio_tjsp_corrigido
 3533007,6876,Nova Granada,Nova Granada
 3533106,6877,Nova Guataporanga,Nova Guataporanga
 3533205,6878,Nova Independência,Nova Independência
+3533254,6879,Novais,Novais
 3533304,6880,Nova Luzitânia,Nova Luzitânia
 3533403,6881,Nova Odessa,Nova Odessa
-3533254,6879,Novais,Novais
 3533502,6882,Novo Horizonte,Novo Horizonte
 3533601,6883,Nuporanga,Nuporanga
 3533700,6884,Ocauçu,Ocauçu
@@ -392,8 +390,8 @@ id_municipio_ibge,id_municipio_tjsp,municipio_tjsp,municipio_tjsp_corrigido
 3534500,6892,Oscar Bressane,Oscar Bressane
 3534609,6893,Osvaldo Cruz,Osvaldo Cruz
 3534708,6894,Ourinhos,Ourinhos
-3534807,6896,Ouro Verde,Ouro Verde
 3534757,6895,Ouroeste,Ouroeste
+3534807,6896,Ouro Verde,Ouro Verde
 3534906,6897,Pacaembu,Pacaembu
 3535002,6898,Palestina,Palestina
 3535101,6899,Palmares Paulista,Palmares Paulista
@@ -489,6 +487,7 @@ id_municipio_ibge,id_municipio_tjsp,municipio_tjsp,municipio_tjsp_corrigido
 3543253,6989,Ribeirão Grande,Ribeirão Grande
 3543303,6990,Ribeirão Pires,Ribeirão Pires
 3543402,6991,Ribeirão Preto,Ribeirão Preto
+3543501,6992,Riversul,Riversul
 3543600,6993,Rifaina,Rifaina
 3543709,6994,Rincão,Rincão
 3543808,6995,Rinópolis,Rinópolis
@@ -496,7 +495,6 @@ id_municipio_ibge,id_municipio_tjsp,municipio_tjsp,municipio_tjsp_corrigido
 3544004,6997,Rio das Pedras,Rio das Pedras
 3544103,6998,Rio Grande da Serra,Rio Grande da Serra
 3544202,6999,Riolândia,Riolândia
-3543501,6992,Riversul,Riversul
 3544251,7000,Rosana,Rosana
 3544301,7001,Roseira,Roseira
 3544400,7002,Rubiácea,Rubiácea
@@ -528,12 +526,12 @@ id_municipio_ibge,id_municipio_tjsp,municipio_tjsp,municipio_tjsp_corrigido
 3546900,7028,Santa Lúcia,Santa Lúcia
 3547007,7029,Santa Maria da Serra,Santa Maria da Serra
 3547106,7030,Santa Mercedes,Santa Mercedes
-3547502,7034,Santa Rita do Passa Quatro,Santa Rita do Passa Quatro
-3547403,7033,Santa Rita d'Oeste,Santa Rita d'Oeste
-3547601,7035,Santa Rosa de Viterbo,Santa Rosa de Viterbo
-3547650,7036,Santa Salete,Santa Salete
 3547205,7031,Santana da Ponte Pensa,Santana da Ponte Pensa
 3547304,7032,Santana de Parnaíba,Santana de Parnaíba
+3547403,7033,Santa Rita d'Oeste,Santa Rita d'Oeste
+3547502,7034,Santa Rita do Passa Quatro,Santa Rita do Passa Quatro
+3547601,7035,Santa Rosa de Viterbo,Santa Rosa de Viterbo
+3547650,7036,Santa Salete,Santa Salete
 3547700,7037,Santo Anastácio,Santo Anastácio
 3547809,7038,Santo André,Santo André
 3547908,7039,Santo Antônio da Alegria,Santo Antônio da Alegria
@@ -575,8 +573,8 @@ id_municipio_ibge,id_municipio_tjsp,municipio_tjsp,municipio_tjsp_corrigido
 3551207,7075,Sarutaiá,Sarutaiá
 3551306,7076,Sebastianópolis do Sul,Sebastianópolis do Sul
 3551405,7077,Serra Azul,Serra Azul
-3551603,7079,Serra Negra,Serra Negra
 3551504,7078,Serrana,Serrana
+3551603,7079,Serra Negra,Serra Negra
 3551702,7080,Sertãozinho,Sertãozinho
 3551801,7081,Sete Barras,Sete Barras
 3551900,7082,Severínia,Severínia
@@ -585,8 +583,8 @@ id_municipio_ibge,id_municipio_tjsp,municipio_tjsp,municipio_tjsp_corrigido
 3552205,7085,Sorocaba,Sorocaba
 3552304,7086,Sud Mennucci,Sud Mennucci
 3552403,7087,Sumaré,Sumaré
-3552551,7089,Suzanápolis,Suzanápolis
 3552502,7088,Suzano,Suzano
+3552551,7089,Suzanápolis,Suzanápolis
 3552601,7090,Tabapuã,Tabapuã
 3552700,7091,Tabatinga,Tabatinga
 3552809,7092,Taboão da Serra,Taboão da Serra
@@ -644,3 +642,5 @@ id_municipio_ibge,id_municipio_tjsp,municipio_tjsp,municipio_tjsp_corrigido
 3557006,7144,Votorantim,Votorantim
 3557105,7145,Votuporanga,Votuporanga
 3557154,7146,Zacarias,Zacarias
+3557204,7147,Chavantes,Chavantes
+3557303,7148,Estiva Gerbi,Estiva Gerbi
