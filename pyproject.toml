@@ -1,10 +1,11 @@
 [project]
 name = "tjsp_unidades"
-version = "0.1.19"
+version = "0.1.20"
 description = "Obtem Unidades Administrativas do Tribunal de Justiça do Estado de São Paulo"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
+    "duckdb>=1.5.5",
     "lxml>=6.1.1",
     "notebook>=7.5.7",
     "open-geodata>=25.9.32",

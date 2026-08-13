@@ -112,6 +112,21 @@ class QuemSomos:
         # Aplica Strip em tudo
         df_raj = df_raj.map(lambda x: x.strip() if isinstance(x, str) else x)
 
+        df_raj["raj_nome"] = df_raj["raj_nome"].replace(
+            {
+                "8ª RAJ - SJ Rio Preto": "8ª RAJ - São José do Rio Preto",
+                "9ª RAJ - SJ dos Campos": "9ª RAJ - São José dos Campos",
+            },
+            regex=True,
+        )
+        df_raj["raj_regiao"] = df_raj["raj_regiao"].replace(
+            {
+                "SJ Rio Preto": "São José do Rio Preto",
+                "SJ dos Campos": "São José dos Campos",
+            },
+            regex=True,
+        )
+
         return df_raj
 
     @property
@@ -223,10 +238,26 @@ class QuemSomos:
         df = df.map(lambda x: x.strip() if isinstance(x, str) else x)
 
         # Results
-        comarcas = df["comarca_tjsp"]
+        # comarcas = df["comarca_tjsp"]
 
         # Aplica Strip em tudo
         df = df.map(lambda x: x.strip() if isinstance(x, str) else x)
 
-        print(f"São {len(set(comarcas))} comarcas")
+        # print(f"São {len(set(comarcas))} comarcas")
+
+        # Renomeia Algumas comarcas para "bater" com o nome das comarcas que estão nos enpoints
+        dd = {
+            # Tabela do Quem Somos: Tabela de Municipios
+            "Estrela D’Oeste": "Estrela dOeste",
+            "Palmeira D’Oeste": "Palmeira d'Oeste",
+            "Santana do Parnaíba": "Santana de Parnaíba",
+            "Carapicuiba": "Carapicuíba",
+            "Cerqueira Cesar": "Cerqueira César",
+            "Rio Grande de Serra": "Rio Grande da Serra",
+            "Santa Bárbara D’Oeste": "Santa Bárbara d'Oeste",
+            "Santa Rosa do Viterbo": "Santa Rosa de Viterbo",
+            "São Luis do Paraitinga": "São Luiz do Paraitinga",
+        }
+
+        df["comarca_tjsp"] = df["comarca_tjsp"].replace(dd, regex=True)
         return df
