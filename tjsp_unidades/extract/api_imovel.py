@@ -9,8 +9,8 @@ import re
 import pandas as pd
 from bs4 import BeautifulSoup
 
-from .api_municipios import Municipio
 from ..utils.helpers import get_default_workers, get_session
+from .api_municipios import Municipio
 
 logger = logging.getLogger(__name__)
 

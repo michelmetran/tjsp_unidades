@@ -116,7 +116,7 @@ class Municipio:
 
         :return: Lista de termos
         """
-        # Cria Lista de Termos a sere pesquisados
+        # Cria Lista de Termos a serem pesquisados
         list_termos = []
         numero_minimo_caracteres = 3
 
